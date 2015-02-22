@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @client_history.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @client_history.email %>
+</p>
+
+<p>
+  <strong>Mobile no:</strong>
+  <%= @client_history.mobile_no %>
+</p>
+
+<p>
+  <strong>Payment status:</strong>
+  <%= @client_history.payment_status %>
+</p>
+
+<p>
+  <strong>Painting:</strong>
+  <%= @client_history.painting %>
+</p>
+
+<%= link_to 'Edit', edit_client_history_path(@client_history) %> |
+<%= link_to 'Back', client_histories_path %>

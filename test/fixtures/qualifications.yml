@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  qualification: MyString
+  college_name: MyString
+  university: MyString
+  year: 9.99
+  profile_id: 
+
+two:
+  qualification: MyString
+  college_name: MyString
+  university: MyString
+  year: 9.99
+  profile_id: 

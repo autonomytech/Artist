@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  profile_id: 
+  ref_no: MyString
+  size: 9.99
+  style: MyString
+  details: MyText
+  medium: MyString
+  status: MyString
+  image: 
+
+two:
+  title: MyString
+  profile_id: 
+  ref_no: MyString
+  size: 9.99
+  style: MyString
+  details: MyText
+  medium: MyString
+  status: MyString
+  image: 

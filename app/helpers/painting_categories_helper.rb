@@ -1,0 +1,2 @@
+module PaintingCategoriesHelper
+end

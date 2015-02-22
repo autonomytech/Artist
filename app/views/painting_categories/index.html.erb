@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Painting Categories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Code</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @painting_categories.each do |painting_category| %>
+      <tr>
+        <td><%= painting_category.name %></td>
+        <td><%= painting_category.code %></td>
+        <td><%= link_to 'Show', painting_category %></td>
+        <td><%= link_to 'Edit', edit_painting_category_path(painting_category) %></td>
+        <td><%= link_to 'Destroy', painting_category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Painting category', new_painting_category_path %>

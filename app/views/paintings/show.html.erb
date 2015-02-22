@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @painting.title %>
+</p>
+
+<p>
+  <strong>Profile:</strong>
+  <%= @painting.profile %>
+</p>
+
+<p>
+  <strong>Ref no:</strong>
+  <%= @painting.ref_no %>
+</p>
+
+<p>
+  <strong>Size:</strong>
+  <%= @painting.size %>
+</p>
+
+<p>
+  <strong>Style:</strong>
+  <%= @painting.style %>
+</p>
+
+<p>
+  <strong>Details:</strong>
+  <%= @painting.details %>
+</p>
+
+<p>
+  <strong>Medium:</strong>
+  <%= @painting.medium %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @painting.status %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @painting.image %>
+</p>
+
+<%= link_to 'Edit', edit_painting_path(@painting) %> |
+<%= link_to 'Back', paintings_path %>
