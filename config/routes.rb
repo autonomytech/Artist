@@ -7,9 +7,10 @@ Rails.application.routes.draw do
   resources :achievements
   resources :qualifications
   resources :profiles
-  resources :comments
   resources :paintings
-  resources :blogs
+  resources :blogs do
+     resources :comments
+  end
   resources :client_histories
   resources :events
   resources :painting_categories
