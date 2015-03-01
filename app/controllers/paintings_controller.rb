@@ -1,5 +1,6 @@
 class PaintingsController < ApplicationController
   before_action :set_painting, only: [:show, :edit, :update, :destroy]
+  before_action :set_list, only: [:new, :edit]
 
   # GET /paintings
   # GET /paintings.json
@@ -15,6 +16,7 @@ class PaintingsController < ApplicationController
   # GET /paintings/new
   def new
     @painting = Painting.new
+    @painting.ref_no = Painting.set_ref_no
   end
 
   # GET /paintings/1/edit
@@ -62,13 +64,18 @@ class PaintingsController < ApplicationController
   end
 
   private
+
+  def set_list
+    @paintings_category_profile = Painting.category_profile_list
+  end
+
     # Use callbacks to share common setup or constraints between actions.
-    def set_painting
-      @painting = Painting.find(params[:id])
-    end
+  def set_painting
+    @painting = Painting.find(params[:id])
+  end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def painting_params
-      params.require(:painting).permit(:title, :profile_id, :ref_no, :size, :style, :details, :medium, :status, :image)
-    end
+  def painting_params
+    params.require(:painting).permit(:title, :profile_id, :ref_no, :size, :style, :details, :medium, :status, :image)
+  end
 end
