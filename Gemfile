@@ -46,3 +46,5 @@ end
 gem 'devise'
 gem 'paperclip'
 gem 'imagemagick-binaries'
+gem 'bootstrap_form'
+gem 'html5_validators'
