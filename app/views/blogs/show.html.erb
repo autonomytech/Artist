@@ -12,7 +12,9 @@
 
 <p>
   <strong>Image:</strong>
-  <%= @blog.image_file_name %>
+  <% unless @blog.image.blank? %>
+      <%= image_tag(@blog.image, width: '800px') %>
+    <% end %>
 </p>
 
 <p>
