@@ -1,6 +1,6 @@
 class PaintingsController < ApplicationController
   before_action :set_painting, only: [:show, :edit, :update, :destroy]
-  before_action :set_list, only: [:new, :edit]
+  before_action :set_list, only: [:new, :create, :edit, :update]
 
   # GET /paintings
   # GET /paintings.json
