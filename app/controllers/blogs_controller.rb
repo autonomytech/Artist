@@ -62,6 +62,26 @@ class BlogsController < ApplicationController
     end
   end
 
+  def like
+    @blog = Blog.find(params[:blog_id])
+    if @blog.like.nil?
+       @like_count =0
+     else
+    @like_count=@blog.like.to_i+1
+     end  
+    @blog.update(like:@like_count)
+  end
+
+  def dislike
+    @blog = Blog.find(params[:blog_id])
+    if @blog.dislike.nil?
+       @like_count =0
+     else
+    @like_count=@blog.dislike.to_i+1
+     end  
+    @blog.update(dislike:@like_count)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_blog

@@ -13,9 +13,15 @@ Rails.application.routes.draw do
   resources :qualifications
   resources :profiles
   resources :paintings
+
   resources :blogs do
+    collection do
+      get :like
+      get :dislike
+    end
     resources :comments
   end
+
   resources :client_histories
   resources :events
   resources :painting_categories

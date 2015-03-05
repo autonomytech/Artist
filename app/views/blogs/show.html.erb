@@ -16,16 +16,10 @@
       <%= image_tag(@blog.image, width: '800px') %>
     <% end %>
 </p>
-
 <p>
-  <strong>Like:</strong>
-  <%= @blog.like %>
-</p>
-
-<p>
-  <strong>Dislike:</strong>
-  <%= @blog.dislike %>
-</p>
+ <%= link_to image_tag("2.jpeg", :border => 0),like_blogs_path(blog_id:@blog.id),remote: true%><div class="like"></div>
+ <%= link_to image_tag("1.jpeg", :border => 0) ,dislike_blogs_path(blog_id:@blog.id),remote: true%><div class="dislike"></div>
+ </p>
 
 <h2>Comments</h2>
 <% @blog.comments.each do |comment| %>
@@ -61,43 +55,26 @@
 </p>
 <% end %>
 
-<%= form_for ([@blog, @blog.comments.build])  do |f|%>
-<% if @blog.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@blog.errors.count, "error") %> prohibited this comment from being saved:</h2>
+<div class="container">
+<div class="row">
+  <div class="col-md-3">
+  </div>
+  <div class="col-md-5">
 
-      <ul>
-      <% @blog.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
+<%=  bootstrap_form_for ([@blog, @blog.comments.build])  do |f|%>
+  
     <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
+ 
     <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :comment %><br>
+  
     <%= f.text_area :comment %>
-  </div>
-  <div class="field">
-    <%= f.label :like %><br>
-    <%= f.number_field :like %>
-  </div>
-  <div class="field">
-    <%= f.label :dislike %><br>
-    <%= f.number_field :dislike %>
-  </div>
-  <div class="actions">
+  
     <%= f.submit %>
-  </div>
 <% end %>
+</div>
+</div>
+</div>
+
 
 
 <%= link_to 'Edit', edit_blog_path(@blog) %> |
