@@ -24,14 +24,15 @@ class QualificationsController < ApplicationController
   # POST /qualifications
   # POST /qualifications.json
   def create
-    @qualification = Qualification.new(qualification_params)
+    @profile = Profile.find(params[:profile_id])
+    @qualification = @profile.qualifications.new(qualification_params)
 
     respond_to do |format|
       if @qualification.save
-        format.html { redirect_to @qualification, notice: 'Qualification was successfully created.' }
+        format.html { redirect_to @profile, notice: 'Qualification was successfully created.' }
         format.json { render :show, status: :created, location: @qualification }
       else
-        format.html { render :new }
+        format.html { render :show, controller: :profiles }
         format.json { render json: @qualification.errors, status: :unprocessable_entity }
       end
     end

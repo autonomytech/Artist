@@ -24,14 +24,15 @@ class AchievementsController < ApplicationController
   # POST /achievements
   # POST /achievements.json
   def create
-    @achievement = Achievement.new(achievement_params)
+    @profile = Profile.find(params[:profile_id])
+    @achievement = @profile.achievements.new(achievement_params)
 
     respond_to do |format|
       if @achievement.save
-        format.html { redirect_to @achievement, notice: 'Achievement was successfully created.' }
+        format.html { redirect_to @profile, notice: 'Achievement was successfully created.' }
         format.json { render :show, status: :created, location: @achievement }
       else
-        format.html { render :new }
+        format.html { render :new, controller: :profiles}
         format.json { render json: @achievement.errors, status: :unprocessable_entity }
       end
     end

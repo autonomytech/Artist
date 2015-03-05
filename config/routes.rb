@@ -9,9 +9,11 @@ Rails.application.routes.draw do
   resources :dashboard
   devise_for :users, controllers: { registrations: :registrations\
   , sessions: :sessions }
-  resources :achievements
-  resources :qualifications
-  resources :profiles
+ 
+  resources :profiles do
+     resources :achievements
+     resources :qualifications
+  end
   resources :paintings
 
   resources :blogs do

@@ -32,8 +32,43 @@
 
 <p>
   <strong>Image:</strong>
-  <%= @profile.image %>
+  <%= image_tag @profile.image, width:200 %>
 </p>
+<table>
+  <thead>
+    <tr>
+      <th>Qualification</th>
+      <th>College name</th>
+      <th>University</th>
+      <th>Year</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @qualifications.each do |qualification|%>
+  <%=render 'qualifications/qualification', qualification: qualification%>
+<%end%>
+  </tbody>
+</table>
+
+<%=render 'qualifications/form' %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Date</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+
+  <tbody>
+<% @achievements.each do |achievement|%>
+  <%=render 'achievements/achievement', achievement: achievement%>
+<%end%>
+
+</tbody>
+</table>
+<%=render 'achievements/form' %>
 
 <%= link_to 'Edit', edit_profile_path(@profile) %> |
 <%= link_to 'Back', profiles_path %>

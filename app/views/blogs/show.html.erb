@@ -12,70 +12,32 @@
 
 <p>
   <strong>Image:</strong>
-  <% unless @blog.image.blank? %>
-      <%= image_tag(@blog.image, width: '800px') %>
-    <% end %>
+  <%= image_tag(@blog.image, width: 200) %>
 </p>
 <p>
- <%= link_to image_tag("2.jpeg", :border => 0),like_blogs_path(blog_id:@blog.id),remote: true%><div class="like"></div>
- <%= link_to image_tag("1.jpeg", :border => 0) ,dislike_blogs_path(blog_id:@blog.id),remote: true%><div class="dislike"></div>
+ <%= link_to image_tag("2.jpeg", width: 30 ),like_blogs_path(blog_id:@blog),remote: true%><div class="like"><%=@blog.like%></div>
+ <%= link_to image_tag("1.jpeg", width: 30 ) ,dislike_blogs_path(blog_id:@blog),remote: true%><div class="dislike"><%=@blog.dislike%></div>
  </p>
 
 <h2>Comments</h2>
-<% @blog.comments.each do |comment| %>
-  <p>
-    <strong>Commenter:</strong>
-    <%= comment.name%>
-  </p>
- 
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.comment%>
-  </p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Comment</th>
+      <th></th>
+    </tr>
+  </thead>
 
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.email%>
-  </p>
-
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.like%>
-  </p>
-
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.dislike%>
-  </p>
-
-  <p>
-  <%= link_to 'Destroy Comment', [comment.blog, comment],
-               method: :delete,
-               data: { confirm: 'Are you sure?' } %>
-</p>
+  <tbody>
+<% @comments.each do |comment| %>
+  <%= render 'comments/comment', comment: comment %>
 <% end %>
+</tbody>
+</table>
 
-<div class="container">
-<div class="row">
-  <div class="col-md-3">
-  </div>
-  <div class="col-md-5">
-
-<%=  bootstrap_form_for ([@blog, @blog.comments.build])  do |f|%>
-  
-    <%= f.text_field :name %>
- 
-    <%= f.text_field :email %>
-  
-    <%= f.text_area :comment %>
-  
-    <%= f.submit %>
-<% end %>
-</div>
-</div>
-</div>
-
-
+<%= render 'comments/form' %>
 
 <%= link_to 'Edit', edit_blog_path(@blog) %> |
 <%= link_to 'Back', blogs_path %>

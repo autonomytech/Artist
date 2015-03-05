@@ -1,25 +1,7 @@
 
-<div class="container">
-<div class="row">
-  <div class="col-md-3">
-  </div>
-  <div class="col-md-5"><%= bootstrap_form_for(@comment) do |f| %>
-  
-
-  
+<%= bootstrap_form_for([@blog, @comment]) do |f| %>
     <%= f.text_field :name %>
- 
     <%= f.text_field :email %>
-  
     <%= f.text_area :comment %>
- 
-    <%= f.number_field :like %>
- 
-    <%= f.number_field :dislike %>
-  
     <%= f.submit %>
 <% end %>
-</div>
-</div>
-</div>
-

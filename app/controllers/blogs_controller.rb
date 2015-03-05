@@ -11,6 +11,8 @@ class BlogsController < ApplicationController
   # GET /blogs/1
   # GET /blogs/1.json
   def show
+    @comment = @blog.comments.build
+    @comments = @blog.comments
   end
 
   # GET /blogs/new
@@ -64,22 +66,12 @@ class BlogsController < ApplicationController
 
   def like
     @blog = Blog.find(params[:blog_id])
-    if @blog.like.nil?
-       @like_count =0
-     else
-    @like_count=@blog.like.to_i+1
-     end  
-    @blog.update(like:@like_count)
+    @blog.update(like: @blog.like.next)
   end
 
   def dislike
     @blog = Blog.find(params[:blog_id])
-    if @blog.dislike.nil?
-       @like_count =0
-     else
-    @like_count=@blog.dislike.to_i+1
-     end  
-    @blog.update(dislike:@like_count)
+    @blog.update(dislike: @blog.dislike.next)
   end
 
   private
