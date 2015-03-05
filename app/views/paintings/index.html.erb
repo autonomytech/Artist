@@ -2,7 +2,7 @@
 
 <h1>Listing Paintings</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Title</th>
@@ -13,8 +13,7 @@
       <th>Details</th>
       <th>Medium</th>
       <th>Status</th>
-      <th>Image</th>
-      <th colspan="3"></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -29,10 +28,7 @@
         <td><%= painting.details %></td>
         <td><%= painting.medium %></td>
         <td><%= painting.status %></td>
-        <td><%= painting.image %></td>
-        <td><%= link_to 'Show', painting %></td>
-        <td><%= link_to 'Edit', edit_painting_path(painting) %></td>
-        <td><%= link_to 'Destroy', painting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', painting %>&nbsp;&nbsp;<%= link_to 'Edit', edit_painting_path(painting) %>&nbsp;&nbsp;<%= link_to 'Destroy', painting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

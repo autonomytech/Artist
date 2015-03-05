@@ -1,0 +1,48 @@
+<header class="navbar navbar-inverse navbar-fixed-top" role="banner">
+		<div class="container">
+			<div class="navbar-header">
+				<%= button_tag class: 'navbar-toggle', :'data-toggle'=> 'collapse', :'data-target'=> '.navbar-collapse' do %>
+				<%= content_tag :span, 'Toggle navigation', class: 'sr-only'%>
+				<%= content_tag :span, '', class: 'icon-bar'%>
+				<%= content_tag :span, '', class: 'icon-bar'%>
+				<%= content_tag :span, '', class: 'icon-bar'%>
+				<%end%>
+				<%= link_to home_index_path, class: 'navbar-brand' do %>
+				<%= image_tag 'logo.png'%><%end%>
+			</div>
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><%= link_to 'Home', home_index_path %></li>
+					<li><%= link_to 'About Us', about_us_home_index_path %></li>
+					<li><%= link_to 'Services', '#' %></li>
+					<li><%= link_to 'portfolio', '#' %></li>
+					<li class="dropdown">
+						<%= link_to '#', class: 'dropdown-toggle', :'data-toggle'=> 'dropdown' do %>Painting <i class="icon-angle-down"></i><%end%>
+						<ul class="dropdown-menu">
+							<li><%= link_to 'Arvind Kolpkar', '#' %></li>
+							<li><%= link_to 'Harshada Kolpkar', '#' %></li>
+							<li class="divider"></li>
+							<li><%= link_to 'All', '#' %></li>
+						</ul>
+					</li>
+					<li><%= link_to 'Blog', '#' %></li> 
+					<li><%= link_to 'Contact Us', '#' %></li>
+					<li><%= link_to new_user_session_path do %>Login <i class="icon-lock"></i><%end%></li>
+				</ul>
+			</div>
+		</div>
+	</header><!--/header-->
+	
+	<div class="section">
+		<%= yield %>
+	</div>
+
+	<div class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="footer-copyright">&copy; 2014 <a href="http://www.vactualart.com/portfolio-item/basica-a-free-html5-template/">Basica</a> Bootstrap HTML Template. By <a href="http://www.vactualart.com">Vactual Art</a>.</div>
+				</div>
+			</div>
+		</div>
+	</div>
