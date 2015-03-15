@@ -11,7 +11,10 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-2.1.1.js
 //= require jquery_ujs
+//= require jquery.turbolinks
+//= require bootstrap-sprockets
 //= require moment
 //= require fullcalendar
 //= require dataTables/jquery.dataTables

@@ -28,7 +28,7 @@ class PaintingCategoriesController < ApplicationController
 
     respond_to do |format|
       if @painting_category.save
-        format.html { redirect_to @painting_category, notice: 'Painting category was successfully created.' }
+        format.html { redirect_to painting_categories_url, notice: 'Painting category was successfully created.' }
         format.json { render :show, status: :created, location: @painting_category }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class PaintingCategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @painting_category.update(painting_category_params)
-        format.html { redirect_to @painting_category, notice: 'Painting category was successfully updated.' }
+        format.html { redirect_to painting_categories_url, notice: 'Painting category was successfully updated.' }
         format.json { render :show, status: :ok, location: @painting_category }
       else
         format.html { render :edit }
@@ -69,6 +69,6 @@ class PaintingCategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def painting_category_params
-      params.require(:painting_category).permit(:name, :code)
+      params.require(:painting_category).permit(:name)
     end
 end

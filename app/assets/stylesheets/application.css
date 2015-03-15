@@ -10,12 +10,12 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
+ *= require font-awesome
  *= require fullcalendar
  *= require dataTables/jquery.dataTables
  *= require_self
+ *= require_tree .
  */
-
 .fc-day:hover{
 background-color: #FFCFD0;
 }
@@ -25,15 +25,9 @@ background-color: black;
 }
 
 .fc-today{
-    background-color: #EC8890;
+    background-color: #CBC6AA;
 }
 
 .fc-content:hover {
     color: #fff;
-    background-color: #000;
-}
-
-.tooltipevent {
-position:absolute;
-z-index:10001;
 }

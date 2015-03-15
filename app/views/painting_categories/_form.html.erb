@@ -1,13 +1,8 @@
-<div class="section">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-4">
-        <%= bootstrap_form_for(@painting_category) do |f| %>
-        <%= f.text_field :name %>
-        <%= f.text_field :code %>
-        <%= f.submit %>
-        <% end %>
-      </div>
-    </div>
-  </div>
+<div class="row">
+	<div class="col-md-4">
+		<%= bootstrap_form_for(@painting_category) do |f| %>
+		<%= f.text_field :name, placeholder: 'Name' %>
+		<%= f.submit 'Save', class: 'btn btn-sm btn-primary' %>
+		<% end %>
+	</div>
 </div>

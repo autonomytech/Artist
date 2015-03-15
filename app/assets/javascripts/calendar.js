@@ -8,20 +8,15 @@ ready = function(){
     	},
         events: '/events.json',
         eventMouseover: function(calEvent, jsEvent) {
-            var tooltip = '<div class="tooltipevent blog"><div class="blog-item"><div class="entry-meta"><span id="publish_date">'+ calEvent.title +'</span><span><i class="fa fa-comment"></i> <a href="#">'+ calEvent.description +'</a></span></div></div></div>';
-            $("body").append(tooltip);
+            var tooltip = '<div class="ibox float-e-margins"><div class="ibox-title"><h5>'+ calEvent.title +'</h5></div><div class="ibox-content">'+ calEvent.description +'</div></div>';
             $(this).mouseover(function(e) {
-                $(this).css('z-index', 10000);
-                $('.tooltipevent').fadeIn('500');
-                $('.tooltipevent').fadeTo('10', 1.9);
+                $('.event').html(tooltip);
             }).mousemove(function(e) {
-                $('.tooltipevent').css('top', e.pageY + 10);
-                $('.tooltipevent').css('left', e.pageX + 20);
+                $('.event').html(tooltip);
             });
         },
         eventMouseout: function(calEvent, jsEvent) {
-            $(this).css('z-index', 8);
-            $('.tooltipevent').remove();
+            $('.event').html('');
         }
 	});
 };

@@ -1,41 +1,25 @@
-<header class="navbar navbar-inverse navbar-fixed-top top-nav-collapse" role="banner">
-		<div class="container">
-			<div class="navbar-header">
-				<%= button_tag class: 'navbar-toggle', :'data-toggle'=> 'collapse', :'data-target'=> '.navbar-collapse' do %>
-				<%= content_tag :span, 'Toggle navigation', class: 'sr-only'%>
-				<%= content_tag :span, '', class: 'icon-bar'%>
-				<%= content_tag :span, '', class: 'icon-bar'%>
-				<%= content_tag :span, '', class: 'icon-bar'%>
-				<%end%>
-				<%= link_to home_index_path, class: 'navbar-brand' do %>
-				<%= image_tag 'logo.png'%><%end%>
-			</div>
-			<div class="collapse navbar-collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li><%= link_to dashboard_index_path do %><i class="icon-dashboard"></i> Dashboard<%end%></li>
-					<li class="dropdown">
-						<%= link_to '#', class: 'dropdown-toggle', :'data-toggle'=> 'dropdown' do %><i class="icon-user"></i> <%= current_user.email%> <i class="icon-angle-down"></i><%end%>
-						<ul class="dropdown-menu">
-							<li><%= link_to edit_user_registration_path do %><i class="icon-edit"></i> Edit Profile<%end%></li>
-							<li class="divider"></li>
-							<li><%= link_to destroy_user_session_path, method: :delete do %><i class="icon-power-off"></i> LogOut<%end%></li>
-						</ul>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</header><!--/header-->
-	
-	<div class="section">
-		<%= yield %>
-	</div>
+<!-- Skin configuration box -->
+<%= render 'layouts/skinconfig' %>
 
-	<div class="footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="footer-copyright">&copy; 2014 <a href="http://www.vactualart.com/portfolio-item/basica-a-free-html5-template/">Basica</a> Bootstrap HTML Template. By <a href="http://www.vactualart.com">Vactual Art</a>.</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<!-- Wrapper-->
+<div id="wrapper" class="<%= params[:controller] %>.<%= params[:action] %>">
+
+    <!-- Navigation -->
+    <%= render 'layouts/navigation' %>
+
+    <!-- Page wraper -->
+    <div id="page-wrapper" class="gray-bg <%= @extra_class %>">
+
+        <!-- Page wrapper -->
+        <%= render 'layouts/topnavbar' %>
+
+        <!-- Main view  -->
+        <%= yield %>
+
+        <!-- Footer -->
+        <%= render 'layouts/footer' %>
+
+    </div>
+    <!-- End page wrapper-->
+
+</div>

@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_profile, only: [:new, :create, :edit, :update]
   # GET /events
   # GET /events.json
   def index
@@ -10,6 +10,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @publish = @event.publish?
   end
 
   # GET /events/new
@@ -68,6 +69,9 @@ class EventsController < ApplicationController
       @event = Event.find(params[:id])
     end
 
+    def set_profile
+      @profiles = Profile.list
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
       params.require(:event).permit(:title, :start_date, :end_date, :start_time, :end_time, :description, :publish, :profile_id)

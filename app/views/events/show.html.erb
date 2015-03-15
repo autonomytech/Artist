@@ -1,44 +1,82 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @event.title %>
-</p>
-
-<p>
-  <strong>Start date:</strong>
-  <%= @event.start_date %>
-</p>
-
-<p>
-  <strong>End date:</strong>
-  <%= @event.end_date %>
-</p>
-
-<p>
-  <strong>Start time:</strong>
-  <%= @event.start_time %>
-</p>
-
-<p>
-  <strong>End time:</strong>
-  <%= @event.end_time %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @event.description %>
-</p>
-
-<p>
-  <strong>Publish:</strong>
-  <%= @event.publish %>
-</p>
-
-<p>
-  <strong>Profile:</strong>
-  <%= @event.profile %>
-</p>
-
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2>Events</h2>
+    <ol class="breadcrumb">
+      <li>
+        <%= link_to 'Dashboard', dashboard_index_path %>
+      </li>
+      <li>
+        <%= link_to 'Events', events_path %>
+      </li>
+      <li class="active">
+        <strong><%= @event.title %></strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-2">
+  </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInUp">
+  <div class="ibox float-e-margins">
+    <div class="ibox-title">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="m-b-md">
+            <h5>Event - <%= @event.title %></h5>
+            <div class="ibox-tools">
+              <a class="dropdown-toggle btn btn-xs btn-white" data-toggle="dropdown" href="#">
+                Action <i class="caret"></i>
+              </a>
+              <ul class="dropdown-menu dropdown-user">
+                <li>
+                  <%= link_to 'Edit', edit_event_path(@event) %>
+                </li>
+                <li>
+                <%= link_to 'Delete', @event, method: :delete, data:{ confirm: "Are you sure? "} %>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ibox-content">
+      <div class="row">
+        <dl class="dl-horizontal">
+          <dt>Status:</dt>
+          <dd><span class="label label-primary"><%= @publish%></span></dd>
+        </dl>
+      </div>
+      <div class="row">
+        <div class="col-lg-5">
+          <dl class="dl-horizontal">
+            <dt>Start Date:</dt>
+            <dd><%= @event.start_date.to_date %></dd>
+            <dt>End Date:</dt>
+            <dd><%= @event.end_date.to_date %></dd>
+            <dt>Start Time:</dt>
+            <dd><%= @event.start_time.to_time %></dd>
+            <dt>End Time:</dt>
+            <dd><%= @event.end_time.to_time %></dd>
+          </dl>
+        </div>
+        <div class="col-lg-7" id="cluster_info">
+          <dl class="dl-horizontal">
+            <dt>Created for:</dt>
+            <dd><%= @event.profile.full_name %></dd>
+            <dt>Last Updated At:</dt>
+            <dd><%= @event.updated_at %></dd>
+            <dt>Created At:</dt>
+            <dd><%= @event.created_at %></dd>
+          </dl>
+        </div>
+      </div>
+      <div class="row">
+        <dl class="dl-horizontal">
+          <dt>Description:</dt>
+          <dd><%= @event.description %></dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</div>
