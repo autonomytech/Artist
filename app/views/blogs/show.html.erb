@@ -1,26 +1,42 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @blog.title %>
-</p>
+<h2>Blog</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Image</th>
+      <th>Like</th>
+      <th>DisLike</th>
 
-<p>
-  <strong>Content:</strong>
-  <%= @blog.content %>
-</p>
+    </tr>
+  </thead>
 
-<p>
-  <strong>Image:</strong>
-  <%= image_tag(@blog.image, width: 200) %>
-</p>
-<p>
- <%= link_to image_tag("2.jpeg", width: 30 ),like_blogs_path(blog_id:@blog),remote: true%><div class="like"><%=@blog.like%></div>
- <%= link_to image_tag("1.jpeg", width: 30 ) ,dislike_blogs_path(blog_id:@blog),remote: true%><div class="dislike"><%=@blog.dislike%></div>
- </p>
+  <tbody>
+<tr>
+
+  <td> <%= @blog.title %></td>
+  <td><%= @blog.content %></td>
+  <td><%= image_tag(@blog.image,width:200)%></td>
+
+
+
+  <td><strong> <%= link_to image_tag("2.jpeg", width: 30 ),like_blogs_path(blog_id:@blog),remote: true%></strong>
+  <div class="like"><%=@blog.like%></div></td>
+
+
+  <td><strong> <%= link_to image_tag("1.jpeg", width: 30 ) ,dislike_blogs_path(blog_id:@blog),remote: true%></strong>
+  <div class="dislike"><%=@blog.dislike%></div></div></td>
+</tr>
+ 
+ 
+ </tbody>
+ </table>
+
 
 <h2>Comments</h2>
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
