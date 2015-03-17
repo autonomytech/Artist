@@ -1,49 +1,85 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @painting.title %>
-</p>
-
-<p>
-  <strong>Profile:</strong>
-  <%= @painting.profile %>
-</p>
-
-<p>
-  <strong>Ref no:</strong>
-  <%= @painting.ref_no %>
-</p>
-
-<p>
-  <strong>Size:</strong>
-  <%= @painting.size %>
-</p>
-
-<p>
-  <strong>Style:</strong>
-  <%= @painting.style %>
-</p>
-
-<p>
-  <strong>Details:</strong>
-  <%= @painting.details %>
-</p>
-
-<p>
-  <strong>Medium:</strong>
-  <%= @painting.medium %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @painting.status %>
-</p>
-
-<p>
-  <strong>Image:</strong>
-  <%= image_tag @painting.image %>
-</p>
-
-<%= link_to 'Edit', edit_painting_path(@painting) %> |
-<%= link_to 'Back', paintings_path %>
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2>Paintings</h2>
+    <ol class="breadcrumb">
+      <li>
+        <%= link_to 'Dashboard', dashboard_index_path %>
+      </li>
+      <li>
+        <%= link_to 'Paintings', paintings_path %>
+      </li>
+      <li class="active">
+        <strong><%= @painting.title %></strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-2">
+  </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInUp">
+  <div class="ibox float-e-margins">
+    <div class="ibox-title">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="m-b-md">
+            <h5>Painting - <%= @painting.title %></h5>
+            <div class="ibox-tools">
+              <a class="dropdown-toggle btn btn-xs btn-white" data-toggle="dropdown" href="#">
+                Action <i class="caret"></i>
+              </a>
+              <ul class="dropdown-menu dropdown-user">
+                <li>
+                  <%= link_to 'Edit', edit_painting_path(@painting) %>
+                </li>
+                <li>
+                  <%= link_to 'Delete', @painting, method: :delete, data:{ confirm: "Are you sure? "} %>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ibox-content">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="image-crop">
+                <%= image_tag @painting.image %>
+              </div>
+              <hr/>
+              <label title="Donload image" id="download" class="btn btn-primary">Download</label>
+              <div class="btn-group">
+                <button class="btn btn-white" id="zoomIn" type="button">Zoom In</button>
+                <button class="btn btn-white" id="zoomOut" type="button">Zoom Out</button>
+                <button class="btn btn-white" id="rotateLeft" type="button">Rotate Left</button>
+                <button class="btn btn-white" id="rotateRight" type="button">Rotate Right</button>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <dl class="dl-horizontal">
+                <dt>Status:</dt>
+                <dd><%= @painting.status %></dd>
+                <dt>Title:</dt>
+                <dd><%= @painting.title %></dd>
+                <dt>Artist</dt>
+                <dd><%= @painting.profile.full_name %></dd>
+                <dt>Ref no:</dt>
+                <dd><%= @painting.ref_no %></dd>
+                <dt>Size:</dt>
+                <dd><%= @painting.size %></dd>
+                <dt>Style:</dt>
+                <dd><%= @painting.style %></dd>
+                <dt>Details:</dt>
+                <dd><%= @painting.details %></dd>
+                <dt>Medium:</dt>
+                <dd><%= @painting.medium %></dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

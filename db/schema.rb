@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150325054808) do
+ActiveRecord::Schema.define(version: 20150222153200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,9 +58,9 @@ ActiveRecord::Schema.define(version: 20150325054808) do
     t.text     "comment"
     t.integer  "like",       default: 0
     t.integer  "dislike",    default: 0
+    t.integer  "blog_id"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
-    t.integer  "blog_id"
   end
 
   add_index "comments", ["blog_id"], name: "index_comments_on_blog_id", using: :btree
@@ -99,9 +99,9 @@ ActiveRecord::Schema.define(version: 20150325054808) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "painting_category_id"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
-    t.integer  "painting_category_id"
   end
 
   add_index "paintings", ["painting_category_id"], name: "index_paintings_on_painting_category_id", using: :btree
@@ -163,7 +163,9 @@ ActiveRecord::Schema.define(version: 20150325054808) do
 
   add_foreign_key "achievements", "profiles"
   add_foreign_key "client_histories", "paintings"
+  add_foreign_key "comments", "blogs"
   add_foreign_key "events", "profiles"
+  add_foreign_key "paintings", "painting_categories"
   add_foreign_key "paintings", "profiles"
   add_foreign_key "qualifications", "profiles"
 end

@@ -6,6 +6,8 @@ class PaintingsController < ApplicationController
   # GET /paintings.json
   def index
     @paintings = Painting.all
+    @profiles = Profile.all
+    @categories = PaintingCategory.all
   end
 
   # GET /paintings/1
@@ -27,7 +29,6 @@ class PaintingsController < ApplicationController
   # POST /paintings.json
   def create
     @painting = Painting.new(painting_params)
-
     respond_to do |format|
       if @painting.save
         format.html { redirect_to @painting, notice: 'Painting was successfully created.' }
@@ -63,6 +64,17 @@ class PaintingsController < ApplicationController
     end
   end
 
+  def artist_paintings
+    @profile = Profile.find(params[:id])
+    @paintings = @profile.paintings
+    @categories = @profile.categories
+  end
+
+  def category_paintings
+    profile_id = params[:profile_id] ? params[:profile_id] : nil
+    @paintings = Painting.paintings(params[:id], profile_id)
+  end
+
   private
 
   def set_list
@@ -76,6 +88,6 @@ class PaintingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
   def painting_params
-    params.require(:painting).permit(:title, :profile_id, :ref_no, :size, :style, :details, :medium, :status, :image)
+    params.require(:painting).permit(:title, :profile_id, :painting_category_id, :ref_no, :size, :style, :details, :medium, :status, :image)
   end
 end

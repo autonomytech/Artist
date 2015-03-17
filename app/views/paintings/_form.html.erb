@@ -1,57 +1,54 @@
-<%= form_for(@painting) do |f| %>
-  <% if @painting.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@painting.errors.count, "error") %> prohibited this painting from being saved:</h2>
-
-      <ul>
-      <% @painting.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= bootstrap_form_for(@painting) do |f| %>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="image-crop">
+          <img src="<%= image_path('p3.jpg') %>">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h4>Preview image</h4>
+        <div class="img-preview img-preview-sm"></div>
+        <h4>Comon method</h4>
+        <p>
+          You can upload new image to crop container and easy download new cropped image.
+        </p>
+        <div class="btn-group">
+          <label title="Upload image file" for="inputImage" class="btn btn-primary">
+            <input type="file" accept="image/*" name="file" id="inputImage" class="hide">
+            Upload new image
+          </label>
+          <label title="Donload image" id="download" class="btn btn-primary">Download</label>
+        </div>
+        <h4>Other method</h4>
+        <p>
+          You may set cropper options with <code>$({image}).cropper(options)</code>
+        </p>
+        <div class="btn-group">
+          <button class="btn btn-white" id="zoomIn" type="button">Zoom In</button>
+          <button class="btn btn-white" id="zoomOut" type="button">Zoom Out</button>
+          <button class="btn btn-white" id="rotateLeft" type="button">Rotate Left</button>
+          <button class="btn btn-white" id="rotateRight" type="button">Rotate Right</button>
+          <button class="btn btn-warning" id="setDrag" type="button">New crop</button>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
     <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :profile_id %><br>
     <%= f.select :profile_id, @paintings_category_profile[0], prompt: true %>
-  </div>
-  <div class="field">
-    <%= f.label :painting_category_id %><br>
     <%= f.select :painting_category_id, @paintings_category_profile[1], prompt: true %>
-  </div>
-  <div class="field">
-    <%= f.label :ref_no %><br>
     <%= f.text_field :ref_no, disabled: :disabled %>
-  </div>
-  <div class="field">
-    <%= f.label :size %><br>
     <%= f.text_field :size %>
-  </div>
-  <div class="field">
-    <%= f.label :style %><br>
     <%= f.text_field :style %>
-  </div>
-  <div class="field">
-    <%= f.label :details %><br>
     <%= f.text_area :details %>
-  </div>
-  <div class="field">
-    <%= f.label :medium %><br>
     <%= f.text_field :medium %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br>
     <%= f.select :status, t('status'), prompt: true %>
-  </div>
-  <div class="field">
-    <%= f.label :image %><br>
     <%= f.file_field :image %>
+    <%= f.submit 'Save', class: 'btn btn-primary' %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+</div>
 <% end %>

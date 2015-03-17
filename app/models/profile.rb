@@ -1,4 +1,5 @@
 class Profile < ActiveRecord::Base
+  has_many :paintings
   has_many :qualifications
   has_many :achievements
   has_attached_file :image
@@ -8,5 +9,13 @@ class Profile < ActiveRecord::Base
 
   def full_name
     [first_name, last_name].join(' ')
+  end
+
+  def categories
+    categories = []
+    paintings.each do |painting|
+      categories << painting.painting_category
+    end
+    categories.uniq
   end
 end

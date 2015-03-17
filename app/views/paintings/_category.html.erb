@@ -1,0 +1,3 @@
+<% @categories.each do |category|%>
+<li><%= link_to category_paintings_painting_path(category, profile_id: profile_id), remote: true do %><i class="fa fa-folder"></i> <%= category.name %><%end%></li>
+<%end%>

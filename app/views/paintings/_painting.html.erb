@@ -1,0 +1,24 @@
+<% @paintings.each_slice(3) do |paintings| %>
+<tr>
+	<% paintings.each do |painting| %>
+	<td>
+		<div class="file-box">
+			<div class="file">
+				<%= link_to painting_path(painting) do %>
+				<span class="corner"></span>
+				<div class="image">
+					<%= image_tag painting.image, alt: "image", class: "img-responsive"%>
+				</div>
+				<div class="file-name">
+					<%= painting.title %>
+					<br />
+					<small>Added: <%= painting.created_at.to_date %></small>
+				</div>
+				<%end%>
+			</div>
+		</div>
+	</td>
+	<%= no_image_available(paintings) %>
+	<% end %>
+</tr>
+<% end %>

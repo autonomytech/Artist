@@ -98,10 +98,15 @@ Rails.application.routes.draw do
   , sessions: :sessions }
  
   resources :profiles do
-     resources :achievements
-     resources :qualifications
+    resources :achievements
+    resources :qualifications
   end
-  resources :paintings
+  resources :paintings do
+    member do
+      get :artist_paintings
+      get :category_paintings
+    end
+  end
 
   resources :blogs do
     collection do
