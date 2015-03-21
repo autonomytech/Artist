@@ -22,7 +22,7 @@
         </div>
         <div class="ibox-content">
           <div class="">
-            <%= link_to 'New Painting', new_painting_category_path, class: 'btn btn-primary' %>
+            <%= link_to 'New Painting Category', new_painting_category_path, class: 'btn btn-primary' %>
           </div>
           <table class="table table-striped table-bordered table-hover">
             <thead>
@@ -37,7 +37,7 @@
               <tr class="gradeA">
                 <td><%= painting_category.name %></td>
                 <td><%= painting_category.created_at.to_date %></td>
-                <td class="center"><%= link_to edit_painting_category_path(painting_category), class: "btn btn-success btn-xs dim" do %><i class="fa fa-pencil"></i><%end%>&nbsp;&nbsp;<%= link_to painting_category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs dim" do %><i class="fa fa-trash"></i><%end%></td>
+                <td class="center"><%= link_to edit_painting_category_path(painting_category) do %><i class="fa fa-pencil fa-lg"></i><%end%>&nbsp;&nbsp;<%= link_to painting_category, method: :delete, data: { confirm: 'Are you sure?' } do %><i class="fa fa-trash fa-lg"></i><%end%></td>
               </tr>
               <%end%>
             </tbody>

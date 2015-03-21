@@ -25,8 +25,9 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @blog = Blog.find(params[:blog_id])
-    @comment = @blog.comments.create(comment_params)
-
+    @comment = @blog.comments.new(comment_params)
+    @comment.name, @comment.email = \
+    Profile.artist_comment(params[:profile][:id]) if params[:profile]
     respond_to do |format|
       if @comment.save
         format.html { redirect_to blog_path(@blog), notice: 'Comment was successfully created.' }

@@ -36,8 +36,9 @@
               <% @blogs.each do |blog| %>
                 <tr>
                   <td class="project-status">
-                    <span class="label label-primary label-blog">Like <%= blog.like %></span><br/><br/>
-                    <span class="label label-danger label-blog">Dislike <%= blog.like %></span>
+                    <span class="label label-primary label-blog"><i class="fa fa-thumbs-up"></i> <%= blog.like %></span><br/><br/>
+                    <span class="label label-danger label-blog"><i class="fa fa-thumbs-down"></i> <%= blog.like %></span><br/><br/>
+                    <span class="label label-info label-blog"><i class="fa fa-comments"></i> <%= blog.comments.count %></span>
                   </td>
                   <td class="project-title">
                     <%= link_to blog.title, blog_path(blog) %>

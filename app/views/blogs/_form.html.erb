@@ -1,18 +1,10 @@
-<div class="container">
 <div class="row">
-  <div class="col-md-3">
-  </div>
-  <div class="col-md-5">
-
-<%= bootstrap_form_for(@blog) do |f| %>
- 
-    <%= f.text_field :title %>
-    <%= f.text_area :content %>
-    <%= f.file_field :image %>    
-    <%= f.submit %>
-  
-<% end %>
+	<div class="col-md-8">
+		<%= bootstrap_form_for(@blog) do |f| %>
+		<%= f.text_field :title, placeholder: 'title' %>
+		<%= f.text_area :content, placeholder: 'content' %>
+		<%= f.file_field :image %>    
+		<%= f.submit 'Save', class: 'btn btn-primary' %>
+		<% end %>
+	</div>
 </div>
-</div>
-</div>
-

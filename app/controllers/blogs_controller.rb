@@ -12,7 +12,8 @@ class BlogsController < ApplicationController
   # GET /blogs/1.json
   def show
     @comment = @blog.comments.build
-    @comments = @blog.comments
+    @comments = @blog.comments.all
+    @profiles = Profile.list
   end
 
   # GET /blogs/new

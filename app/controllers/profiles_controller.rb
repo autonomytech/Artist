@@ -29,14 +29,15 @@ class ProfilesController < ApplicationController
   # POST /profiles.json
   def create
     @profile = Profile.new(profile_params)
-
     respond_to do |format|
-      if @profile.save
-        format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
-        format.json { render :show, status: :created, location: @profile }
+      if Profile.count < 2
+        if @profile.save
+          format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
+        else
+          format.html { render :new }
+        end
       else
-        format.html { render :new }
-        format.json { render json: @profile.errors, status: :unprocessable_entity }
+        format.html { redirect_to @profile, notice: 'You cannot create more profiles' }
       end
     end
   end

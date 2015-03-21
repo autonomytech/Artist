@@ -1,59 +1,97 @@
-<p id="notice"><%= notice %></p>
-
-<h2>Blog</h2>
-<table class="table">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th>Image</th>
-      <th>Like</th>
-      <th>DisLike</th>
-
-    </tr>
-  </thead>
-
-  <tbody>
-<tr>
-
-  <td> <%= @blog.title %></td>
-  <td><%= @blog.content %></td>
-  <td><%= image_tag(@blog.image,width:200)%></td>
-
-
-
-  <td><strong> <%= link_to image_tag("2.jpeg", width: 30 ),like_blogs_path(blog_id:@blog),remote: true%></strong>
-  <div class="like"><%=@blog.like%></div></td>
-
-
-  <td><strong> <%= link_to image_tag("1.jpeg", width: 30 ) ,dislike_blogs_path(blog_id:@blog),remote: true%></strong>
-  <div class="dislike"><%=@blog.dislike%></div></div></td>
-</tr>
- 
- 
- </tbody>
- </table>
-
-
-<h2>Comments</h2>
-<table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Comment</th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-<% @comments.each do |comment| %>
-  <%= render 'comments/comment', comment: comment %>
-<% end %>
-</tbody>
-</table>
-
-<%= render 'comments/form' %>
-
-<%= link_to 'Edit', edit_blog_path(@blog) %> |
-<%= link_to 'Back', blogs_path %>
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2>Blog</h2>
+    <ol class="breadcrumb">
+      <li>
+        <%= link_to 'Dashboard', dashboard_index_path %>
+      </li>
+      <li>
+        <%= link_to 'Blog', blogs_path %>
+      </li>
+      <li class="active">
+        <strong><%= @blog.title %></strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-2">
+  </div>
+</div>
+<div class="wrapper wrapper-content">
+  <div class="row animated fadeInRight">
+    <div class="col-md-6">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Blog Details</h5>
+          <div class="ibox-tools">
+            <a class="dropdown-toggle btn btn-xs btn-white" data-toggle="dropdown" href="#">
+              Action <i class="caret"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-user">
+              <li>
+                <%= link_to 'Edit', edit_blog_path(@blog) %>
+              </li>
+              <li>
+                <%= link_to 'Delete', @blog, method: :delete, data:{ confirm: "Are you sure? "} %>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="ibox-content no-padding border-left-right">
+            <%= image_tag @blog.image, alt: "image", class: "img-responsive"%>
+          </div>
+          <div class="ibox-content profile-content">
+            <h4><strong><%= @blog.title %></strong></h4>
+            <p><i class="fa fa-map-marker"></i> Created: <%= @blog.created_at.to_date %></p>
+            <h5>
+              Content
+            </h5>
+            <p>
+              <%= @blog.content %>
+            </p>
+            <div class="row m-t-lg">
+              <div class="col-md-1">
+                <span class="label label-primary label-blog"><i class="fa fa-thumbs-up"></i> <%= @blog.like %></span>
+              </div>
+              <div class="col-md-1">
+                <span class="label label-danger label-blog"><i class="fa fa-thumbs-down"></i> <%= @blog.like %></span>
+              </div>
+              <div class="col-md-1">
+                <span class="label label-info label-blog"><i class="fa fa-comments"></i> <%= @blog.comments.count %></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Comment</h5>
+        </div>
+        <div class="ibox-content">
+          <%= render 'comments/form' %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Comments</h5>
+        </div>
+        <div class="ibox-content">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @comments.each do |comment| %>
+                <%= render 'comments/comment', comment: comment %>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

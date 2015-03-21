@@ -1,14 +1,15 @@
-<div class="container">
 <div class="row">
-  <div class="col-md-3">
-  </div>
-  <div class="col-md-5">
-<%= bootstrap_form_for([@blog, @comment]) do |f| %>
-    <%= f.text_field :name %>
-    <%= f.text_field :email %>
-    <%= f.text_area :comment %>
-    <%= f.submit %>
-<% end %>
-</div>
-</div>
+	<div class="col-md-8">
+		<%= bootstrap_form_for([@blog, @comment]) do |f| %>
+		<% if user_signed_in? %>
+		  <%= label_tag :Artist %>
+		  <%= select :profile, :id, @profiles, {prompt: true}, {class: 'form-control'} %><br/>
+		<% else %>
+		  <%= f.text_field :name, placeholder: 'Name' %>
+		  <%= f.text_field :email, placeholder: 'Email' %>
+		<% end %>
+		<%= f.text_area :comment, placeholder: 'Comments' %>
+		<%= f.submit 'Comment', class: 'btn btn-sm btn-primary' %>
+		<% end %>
+	</div>
 </div>

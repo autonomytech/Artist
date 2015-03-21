@@ -18,4 +18,9 @@ class Profile < ActiveRecord::Base
     end
     categories.uniq
   end
+
+  def self.artist_comment(id)
+    profile = find(id)
+    return profile.full_name, profile.email
+  end
 end

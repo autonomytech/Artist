@@ -59,7 +59,14 @@ $(function() {
     $("#setDrag").click(function () {
         $image.cropper("setDragMode", "crop");
     });
-  
+    
+    $('.date').datepicker({
+        todayBtn: "linked",
+        keyboardNavigation: false,
+        forceParse: false,
+        calendarWeeks: true,
+        autoclose: true
+    });
 });
 
 
