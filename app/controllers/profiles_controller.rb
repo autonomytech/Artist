@@ -11,9 +11,9 @@ class ProfilesController < ApplicationController
   # GET /profiles/1.json
   def show
     @qualification = @profile.qualifications.build
-    @qualifications = @profile.qualifications
+    @qualifications = @profile.qualifications.all
     @achievement = @profile.achievements.build
-    @achievements = @profile.achievements
+    @achievements = @profile.achievements.all
   end
 
   # GET /profiles/new

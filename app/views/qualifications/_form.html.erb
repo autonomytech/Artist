@@ -1,33 +1,7 @@
-<%= form_for([@profile,@qualification]) do |f| %>
-  <% if @qualification.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@qualification.errors.count, "error") %> prohibited this qualification from being saved:</h2>
-
-      <ul>
-      <% @qualification.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :qualification %><br>
-    <%= f.text_field :qualification %>
-  </div>
-  <div class="field">
-    <%= f.label :college_name %><br>
-    <%= f.text_field :college_name %>
-  </div>
-  <div class="field">
-    <%= f.label :university %><br>
-    <%= f.text_field :university %>
-  </div>
-  <div class="field">
-    <%= f.label :year %><br>
-    <%= f.text_field :year %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%= bootstrap_form_for([@profile,@qualification]) do |f| %>
+    <%= f.text_field :qualification, placeholder: 'Qualification' %>
+    <%= f.text_field :college_name, placeholder: 'College Name' %>
+    <%= f.text_field :university, placeholder: 'University' %>
+    <%= f.text_field :year, placeholder: 'Year' %>
+    <%= f.submit 'Save', class: 'btn btn-sm btn-primary' %>
 <% end %>

@@ -13,8 +13,8 @@ $(function() {
     if (window.FileReader) {
         $inputImage.change(function () {
             var fileReader = new FileReader(),
-                    files = this.files,
-                    file;
+            files = this.files,
+            file;
 
             if (!files.length) {
                 return;
@@ -68,7 +68,6 @@ $(function() {
         autoclose: true
     });
 });
-
 
     // Config box
     // Enable/disable fixed top navbar

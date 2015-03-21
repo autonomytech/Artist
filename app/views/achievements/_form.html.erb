@@ -1,29 +1,17 @@
-<%= form_for([@profile, @achievement]) do |f| %>
-  <% if @achievement.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@achievement.errors.count, "error") %> prohibited this achievement from being saved:</h2>
-
-      <ul>
-      <% @achievement.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :date %><br>
-    <%= f.date_select :date %>
-  </div>
-  <div class="field">
-    <%= f.label :details %><br>
-    <%= f.text_area :details %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%= bootstrap_form_for([@profile, @achievement]) do |f| %>
+  <%= f.text_field :name, placeholder: 'Name' %>
+  <%= f.text_field :date, class: 'date', placeholder: 'Date' %>
+  <%= f.text_area :details, placeholder: 'Details' %>
+  <%= f.submit 'Save', class: 'btn btn-sm btn-primary' %>
 <% end %>
+<script type="text/javascript">
+  $(function() {
+    $('.date').datepicker({
+        todayBtn: "linked",
+        keyboardNavigation: false,
+        forceParse: false,
+        calendarWeeks: true,
+        autoclose: true
+    });
+  });
+</script>

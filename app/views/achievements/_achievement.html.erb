@@ -1,5 +1,6 @@
 <tr>
-        <td><%= achievement.name %></td>
-        <td><%= achievement.date %></td>
-        <td><%= achievement.details %></td>
-      </tr>
+	<td><%= achievement.name %></td>
+	<td><%= achievement.date %></td>
+	<td><%= achievement.details %></td>
+	<td><%= link_to [profile, achievement], method: :delete, data: { confirm: 'Are you sure?' } do %><i class="fa fa-trash fa-lg"></i><%end%></td>
+</tr>
