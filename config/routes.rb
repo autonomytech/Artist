@@ -116,7 +116,11 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  resources :client_histories
+  resources :client_histories do
+    collection do
+      get :client_history_painting
+    end
+  end
   resources :events
   resources :painting_categories
 end

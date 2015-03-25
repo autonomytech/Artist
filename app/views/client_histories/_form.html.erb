@@ -1,37 +1,23 @@
-<%= form_for(@client_history) do |f| %>
-  <% if @client_history.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@client_history.errors.count, "error") %> prohibited this client_history from being saved:</h2>
-
-      <ul>
-      <% @client_history.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="row">
+  <div class="col-md-4">
+    <%= bootstrap_form_for(@client_history) do |f| %>
+    <%= f.text_field :name, placeholder: 'Name' %>
+    <%= f.text_field :email, placeholder: 'Email' %>
+    <%= f.text_field :mobile_no, placeholder: 'Mobile No' %>
+    <%= f.text_field :payment_status, placeholder: 'Payment Status' %>
+    <%= f.select :painting_id, @paintings, {prompt: true}, {onchange: "painting_client_history();"} %>    
+    <%= f.submit 'Save', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+  <div class="col-md-8">
+    <div class="img-crop">
+      <%= image_tag (@client_history.painting ? @client_history.painting.image : ''), width: 500 %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :mobile_no %><br>
-    <%= f.text_field :mobile_no %>
-  </div>
-  <div class="field">
-    <%= f.label :payment_status %><br>
-    <%= f.text_field :payment_status %>
-  </div>
-  <div class="field">
-    <%= f.label :painting_id %><br>
-    <%= f.text_field :painting_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
+<script type="text/javascript">
+  function painting_client_history(){
+    var a = { painting_id: $('#client_history_painting_id').val() };
+    $.get('client_history_painting',a,function(){});
+  }
+</script>

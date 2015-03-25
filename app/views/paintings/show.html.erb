@@ -44,38 +44,48 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="row">
-            <div class="col-md-6">
-              <div class="image-crop">
-                <%= image_tag @painting.image %>
-              </div>
-              <hr/>
-              <label title="Donload image" id="download" class="btn btn-primary">Download</label>
-              <div class="btn-group">
-                <button class="btn btn-white" id="zoomIn" type="button">Zoom In</button>
-                <button class="btn btn-white" id="zoomOut" type="button">Zoom Out</button>
-                <button class="btn btn-white" id="rotateLeft" type="button">Rotate Left</button>
-                <button class="btn btn-white" id="rotateRight" type="button">Rotate Right</button>
-              </div>
+            <div class="col-md-8">
+              <%= image_tag @painting.image, width: 700 %>
             </div>
             <div class="col-lg-4">
-              <dl class="dl-horizontal">
-                <dt>Status:</dt>
-                <dd><%= @painting.status %></dd>
-                <dt>Title:</dt>
-                <dd><%= @painting.title %></dd>
-                <dt>Artist</dt>
-                <dd><%= @painting.profile.full_name %></dd>
-                <dt>Ref no:</dt>
-                <dd><%= @painting.ref_no %></dd>
-                <dt>Size:</dt>
-                <dd><%= @painting.size %></dd>
-                <dt>Style:</dt>
-                <dd><%= @painting.style %></dd>
-                <dt>Details:</dt>
-                <dd><%= @painting.details %></dd>
-                <dt>Medium:</dt>
-                <dd><%= @painting.medium %></dd>
-              </dl>
+              <table class="table">
+                <tr>
+                  <th>Status</th>
+                  <td><%= @painting.status %> <%= painting_status%></td>
+                </tr>
+                <tr>
+                  <th>Title</th>
+                  <td><%= @painting.title %></td>
+                </tr>
+                <tr>
+                  <th>Artist</th>
+                  <td><%= @painting.profile.full_name %></td>
+                </tr>
+                <tr>
+                  <th>Category</th>
+                  <td><%= @painting.painting_category.name %></td>
+                </tr>
+                <tr>
+                  <th>Ref. No.</th>
+                  <td><%= @painting.ref_no %></td>
+                </tr>
+                <tr>
+                  <th>Size</th>
+                  <td><%= @painting.size %></td>
+                </tr>
+                <tr>
+                  <th>Style</th>
+                  <td><%= @painting.style %></td>
+                </tr>
+                <tr>
+                  <th>Medium</th>
+                  <td><%= @painting.medium %></td>
+                </tr>
+                <tr>
+                  <th>Details</th>
+                  <td><%= @painting.details %></td>
+                </tr>
+              </table>
             </div>
           </div>
         </div>

@@ -3,7 +3,7 @@
 		<%= bootstrap_form_for([@blog, @comment]) do |f| %>
 		<% if user_signed_in? %>
 		  <%= label_tag :Artist %>
-		  <%= select :profile, :id, @profiles, {prompt: true}, {class: 'form-control'} %><br/>
+		  <%= select :profile, :id, @profiles, {prompt: true}, {class: 'form-control', required: true} %><br/>
 		<% else %>
 		  <%= f.text_field :name, placeholder: 'Name' %>
 		  <%= f.text_field :email, placeholder: 'Email' %>

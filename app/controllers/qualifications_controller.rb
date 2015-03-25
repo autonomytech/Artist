@@ -57,7 +57,7 @@ class QualificationsController < ApplicationController
   def destroy
     @qualification.destroy
     respond_to do |format|
-      format.html { redirect_to qualifications_url, notice: 'Qualification was successfully destroyed.' }
+      format.html { redirect_to profile_path(@qualification.profile), notice: 'Qualification was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

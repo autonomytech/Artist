@@ -1,6 +1,32 @@
-<h1>Editing Client History</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @client_history %> |
-<%= link_to 'Back', client_histories_path %>
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2>Client History</h2>
+    <ol class="breadcrumb">
+      <li>
+        <%= link_to 'Dashboard', dashboard_index_path %>
+      </li>
+      <li>
+      	<%= link_to 'Client History', client_histories_path %>
+      </li>
+      <li class="active">
+        <strong>Edit</strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-2">
+  </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Edit Client History <%= @client_history.name %></h5>
+        </div>
+        <div class="ibox-content">
+          <%= render 'form' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

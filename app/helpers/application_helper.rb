@@ -1,4 +1,12 @@
 module ApplicationHelper
+  def stylesheet_javascript_section
+    if user_signed_in?
+      'application'
+    else
+      'vendor'
+    end
+  end
+
   def layout_for_user!
     if user_signed_in?
       render 'layouts/dashboard_pages'
@@ -32,5 +40,27 @@ module ApplicationHelper
 
   def profile_id
     @profile ? @profile.id : 0
+  end
+
+  def painting_status
+    case @painting.status
+    when 'available'
+      html = <<-HTML
+        <i class="fa fa-circle text-navy"></i>
+      HTML
+    when 'sold'
+      html = <<-HTML
+        <i class="fa fa-circle text-danger"></i>
+      HTML
+    when 'hold'
+      html = <<-HTML
+        <i class="fa fa-circle text-default"></i>
+      HTML
+    when 'reserved'
+      html = <<-HTML
+        <i class="fa fa-circle text-warning"></i>
+      HTML
+    end
+    html ? html.html_safe : ''
   end
 end

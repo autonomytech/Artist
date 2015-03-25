@@ -57,7 +57,7 @@ class AchievementsController < ApplicationController
   def destroy
     @achievement.destroy
     respond_to do |format|
-      format.html { redirect_to achievements_url, notice: 'Achievement was successfully destroyed.' }
+      format.html { redirect_to profile_path(@achievement.profile), notice: 'Achievement was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

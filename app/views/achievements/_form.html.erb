@@ -1,17 +1,6 @@
 <%= bootstrap_form_for([@profile, @achievement]) do |f| %>
   <%= f.text_field :name, placeholder: 'Name' %>
-  <%= f.text_field :date, class: 'date', placeholder: 'Date' %>
+  <%= f.date_field :date, class: 'date', placeholder: 'Date' %>
   <%= f.text_area :details, placeholder: 'Details' %>
   <%= f.submit 'Save', class: 'btn btn-sm btn-primary' %>
 <% end %>
-<script type="text/javascript">
-  $(function() {
-    $('.date').datepicker({
-        todayBtn: "linked",
-        keyboardNavigation: false,
-        forceParse: false,
-        calendarWeeks: true,
-        autoclose: true
-    });
-  });
-</script>

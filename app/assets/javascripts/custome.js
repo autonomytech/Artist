@@ -1,5 +1,33 @@
 $(function() {
 
+    $('.table').dataTable();
+    var $inputImage = $(".input_image");
+    if (window.FileReader) {
+      $inputImage.change(function () {
+        var fileReader = new FileReader(),
+        files = this.files,
+        file;
+
+        if (!files.length) {
+          return;
+        }
+
+        file = files[0];
+
+        if (/^image\/\w+$/.test(file.type)) {
+          var im = fileReader.readAsDataURL(file);
+          fileReader.onload = function () {
+            $(".img-crop > img").attr('src', this.result);
+            $(".img-crop > img").attr('width', 600);
+          };
+        } else {
+          showMessage("Please choose an image file.");
+        }
+      });
+    } else {
+      $inputImage.addClass("hide");
+    }
+    
     var $image = $(".image-crop > img")
     $($image).cropper({
         aspectRatio: 1.618,

@@ -4,7 +4,7 @@ class RegistrationsController < Devise::RegistrationsController
   private
 
   def sign_up_check
-    redirect_to home_index_path if User.first
+    redirect_to dashboard_index_path if User.first
   end
 
   def after_sign_up_path_for(*)

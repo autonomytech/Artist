@@ -1,5 +1,6 @@
 class ClientHistoriesController < ApplicationController
   before_action :set_client_history, only: [:show, :edit, :update, :destroy]
+  before_action :set_list, only: [:new, :create, :edit, :update]
 
   # GET /client_histories
   # GET /client_histories.json
@@ -61,14 +62,23 @@ class ClientHistoriesController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_client_history
-      @client_history = ClientHistory.find(params[:id])
-    end
+  def client_history_painting
+    @painting = Painting.find(params[:painting_id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def client_history_params
-      params.require(:client_history).permit(:name, :email, :mobile_no, :payment_status, :painting_id)
-    end
+  private
+
+  def set_list
+    @paintings = Painting.list
+  end
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_client_history
+    @client_history = ClientHistory.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def client_history_params
+    params.require(:client_history).permit(:name, :email, :mobile_no, :payment_status, :painting_id)
+  end
 end
