@@ -1,6 +1,5 @@
 $(function() {
 
-    $('.table').dataTable();
     var $inputImage = $(".input_image");
     if (window.FileReader) {
       $inputImage.change(function () {

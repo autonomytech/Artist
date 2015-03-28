@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def stylesheet_javascript_section
+  def css_js_section
     if user_signed_in?
       'application'
     else

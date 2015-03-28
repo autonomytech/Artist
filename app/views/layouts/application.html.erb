@@ -6,10 +6,10 @@
 	<title>INSPINIA | Responsive admin theme</title>
 
 	<!-- Main css styles -->
-	<%= stylesheet_link_tag stylesheet_javascript_section, media: 'all' %>
+	<%= stylesheet_link_tag css_js_section, media: 'all', 'data-turbolinks-track' => true %>
 
 	<!-- Main javascript files -->
-	<%= javascript_include_tag stylesheet_javascript_section %>
+	<%= javascript_include_tag css_js_section, 'data-turbolinks-track' => true %>
 	<%= csrf_meta_tags %>
 </head>
 <body >
