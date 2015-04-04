@@ -1,8 +1,7 @@
 class GalleryController < ApplicationController
-  def basic_gallery
-  end
+  skip_before_filter :authenticate_user!
 
-  def bootstrap_carusela
+  def index
+    redirect_to dashboard_index_path if current_user
   end
-
 end

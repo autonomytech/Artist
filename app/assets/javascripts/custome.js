@@ -1,3 +1,11 @@
+var datatable;
+datatable = function(){
+  $('.table').dataTable();
+}
+$(document).ready(datatable);
+$(document).on('page:load',datatable);
+
+
 $(function() {
 
     var $inputImage = $(".input_image");

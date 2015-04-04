@@ -14,16 +14,8 @@
 //= require jquery-2.1.1.js
 //= require jquery_ujs
 //= require jquery.turbolinks
-//= require bootstrap-sprockets
-//= require moment
-//= require fullcalendar
+//= require bootstrap
+//= require bootstrap.min.js
+//= require wow.min.js
 //= require dataTables/jquery.dataTables
 //= require turbolinks
-//= require_tree .
-
-var datatable;
-datatable = function(){
-  $('.table').dataTable();
-}
-$(document).ready(datatable);
-$(document).on('page:load',datatable);

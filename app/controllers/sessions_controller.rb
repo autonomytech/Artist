@@ -1,5 +1,6 @@
 class SessionsController < Devise::SessionsController
-  before_filter :sign_up, only: :new
+  layout :false
+  before_action :sign_up, only: :new
 
   private
 

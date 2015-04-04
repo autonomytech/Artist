@@ -1,0 +1,36 @@
+<div id="wrapper">
+	<!-- Navigation -->
+	<%= render 'layouts/navigation'%>
+	<!-- Page wraper -->
+	<div id="page-wrapper" class="gray-bg <%= @extra_class %>">
+
+		<!-- Page wrapper -->
+		<%= render 'layouts/page_wrapper'%>
+		<!-- Main view  -->
+		<%= yield %>
+
+		<!-- Footer -->
+		<%= render 'layouts/footer'%>
+	</div>
+	<!-- End page wrapper-->
+</div>
+<script type="text/javascript">
+	$(function() {
+
+		setTimeout(function() {
+			toastr.options = {
+				closeButton: true,
+				progressBar: true,
+				showMethod: 'slideDown',
+				timeOut: 20000
+			};
+			<% if notice %>
+			toastr.success("<%= notice %>");
+			<% end %>
+			<% if alert %>
+			toastr.error("<%= alert %>");
+			<% end %>
+
+		}, 1000);
+	});
+</script>

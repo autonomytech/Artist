@@ -1,17 +1,17 @@
 module ApplicationHelper
-  def css_js_section
+  def css_js_section!
     if user_signed_in?
-      'application'
+      'application1'
     else
-      'vendor'
+      'application'
     end
   end
 
   def layout_for_user!
     if user_signed_in?
-      render 'layouts/dashboard_pages'
+      render 'layouts/inside_pages'
     else
-      render 'layouts/landing_pages'
+      render 'layouts/outside_pages'
     end
   end
 

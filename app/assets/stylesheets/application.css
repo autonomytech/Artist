@@ -11,26 +11,11 @@
  * file per style scope.
  *
  *= require font-awesome
- *= require fullcalendar
  *= require dataTables/jquery.dataTables
+ *= require animate
+ *= require animate.min.css
+ *= require datepicker3
+ *= require style2
+ *= require style3
  *= require_self
- *= require_tree .
  */
-.fc-day:hover{
-background-color: #FFCFD0;
-}
-
-.fc-day:active{
-background-color: black;
-}
-
-.fc-today{
-    background-color: #CBC6AA;
-}
-
-.fc-content:hover {
-    color: #fff;
-}
-.fa-white{
-	color: #fff;
-}

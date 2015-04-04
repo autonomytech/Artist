@@ -9,5 +9,6 @@ Bundler.require(*Rails.groups)
 module Artist
   class Application < Rails::Application
     config.active_record.raise_in_transactional_callbacks = true
+    config.assets.precompile += %w( application1.css application1.js )
   end
 end

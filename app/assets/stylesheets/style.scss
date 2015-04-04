@@ -3,9 +3,6 @@
  *   Copyright 2014 Webapplayers.com
  */
 
-// Google Fonts
-@import url("//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&lang=en");
-
 // Bootstra
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -404,7 +401,6 @@ body.mini-navbar .navbar-default .nav > li > .nav-second-level li a {
 .navbar-fixed-top {
   background: white;
   transition-duration: 0.5s;
-  border-bottom: 1px solid #e7eaec !important;
 }
 
 .navbar-fixed-top, .navbar-static-top {
@@ -5850,4 +5846,23 @@ body.skin-3 {
 
 .label-blog{
   font-size: 12px;
+}
+
+.fc-day:hover{
+background-color: #FFCFD0;
+}
+
+.fc-day:active{
+background-color: black;
+}
+
+.fc-today{
+    background-color: #CBC6AA;
+}
+
+.fc-content:hover {
+    color: #fff;
+}
+.fa-white{
+  color: #fff;
 }
