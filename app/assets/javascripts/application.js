@@ -18,4 +18,5 @@
 //= require bootstrap.min.js
 //= require wow.min.js
 //= require dataTables/jquery.dataTables
+//= require artist
 //= require turbolinks
