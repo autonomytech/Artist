@@ -17,5 +17,6 @@
  *= require datepicker3
  *= require style2
  *= require style3
+ *= require toastr.min.css
  *= require_self
  */

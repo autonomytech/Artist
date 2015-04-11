@@ -1,5 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
-  layout :false, only: :new
+  layout :false, only: [:new, :create]
   before_action :sign_up_check, only: :new
 
   private
