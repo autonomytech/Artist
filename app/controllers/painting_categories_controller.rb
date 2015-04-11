@@ -37,7 +37,6 @@ class PaintingCategoriesController < ApplicationController
   # DELETE /painting_categories/1.json
   def destroy
     @painting_category.destroy
-    flash[:notice] = 'Painting category was successfully destroyed.'
   end
 
   private

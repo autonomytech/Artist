@@ -63,4 +63,21 @@ module ApplicationHelper
     end
     html ? html.html_safe : ''
   end
+
+  def profies_count
+    count = @profiles.count
+    if count.eql? 0
+      html = <<-HTML
+        <td></td><td></td>
+      HTML
+    elsif count.eql? 1
+      html = <<-HTML
+        <td></td>
+      HTML
+    else
+      html = <<-HTML
+      HTML
+    end
+    html.html_safe
+  end
 end
