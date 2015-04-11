@@ -13,7 +13,7 @@ class PaintingCategoriesController < ApplicationController
 
   # GET /painting_categories/new
   def new
-    @painting_category = PaintingCategory.new
+    @painting_category ||= PaintingCategory.new
   end
 
   # GET /painting_categories/1/edit
@@ -40,17 +40,18 @@ class PaintingCategoriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def painting_category_list
-      @painting_categories = PaintingCategory.order(created_at: :desc)
-    end
 
-    def set_painting_category
-      @painting_category = PaintingCategory.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def painting_category_list
+    @painting_categories ||= PaintingCategory.order(created_at: :desc)
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def painting_category_params
-      params.require(:painting_category).permit(:name)
-    end
+  def set_painting_category
+    @painting_category ||= PaintingCategory.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def painting_category_params
+    params.require(:painting_category).permit(:name)
+  end
 end
