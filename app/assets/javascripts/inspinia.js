@@ -1,5 +1,5 @@
 // Custom scripts
-$(document).ready(function () {
+$(function () {
 
     // MetsiMenu
     $('#side-menu').metisMenu();
@@ -17,13 +17,10 @@ $(document).ready(function () {
             ibox.find('[id^=map-]').resize();
         }, 50);
     });
-
-    // Close ibox function
     $('.close-link').click( function() {
         var content = $(this).closest('div.ibox');
         content.remove();
     });
-
     // Small todo handler
     $('.check-link').click( function(){
         var button = $(this).find('i');

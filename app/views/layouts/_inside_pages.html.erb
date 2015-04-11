@@ -14,23 +14,3 @@
 	</div>
 	<!-- End page wrapper-->
 </div>
-<script type="text/javascript">
-	$(function() {
-
-		setTimeout(function() {
-			toastr.options = {
-				closeButton: true,
-				progressBar: true,
-				showMethod: 'slideDown',
-				timeOut: 20000
-			};
-			<% if notice %>
-			toastr.success("<%= notice %>");
-			<% end %>
-			<% if alert %>
-			toastr.error("<%= alert %>");
-			<% end %>
-
-		}, 1000);
-	});
-</script>

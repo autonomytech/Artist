@@ -5,6 +5,23 @@ datatable = function(){
 $(document).ready(datatable);
 $(document).on('page:load',datatable);
 
+function artist_msg(msg, type) {
+    setTimeout(function() {
+        toastr.options = {
+            closeButton: true,
+            progressBar: true,
+            showMethod: 'slideDown',
+            timeOut: 2000
+        };
+
+        if (type == 'error'){
+          toastr.error(msg);
+        }else{
+          toastr.success(msg);
+        }
+
+    }, 1000);
+}
 
 $(function() {
 

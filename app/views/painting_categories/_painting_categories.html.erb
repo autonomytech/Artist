@@ -1,0 +1,21 @@
+<table class="table table-striped table-hover">
+	<thead>
+		<tr>
+			<th>Action</th>
+			<th>Name</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @painting_categories.each do |painting_category| %>
+		<tr>
+		    <td>
+		    <div class="ibox-tools pull-left">
+		      <%= link_to painting_category, method: :delete, remote: true, data: { confirm: 'Are you sure?' } do %><i class="fa fa-trash fa-md"></i>
+		      <%end%>
+            </div>
+		    </td>
+			<td><%= link_to painting_category.name.capitalize, edit_painting_category_path(painting_category), remote: true %></td>
+		</tr>
+		<%end%>
+	</tbody>
+</table>

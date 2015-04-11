@@ -1,10 +1,9 @@
 class PaintingCategoriesController < ApplicationController
   before_action :set_painting_category, only: [:show, :edit, :update, :destroy]
-
+  before_action :painting_category_list
   # GET /painting_categories
   # GET /painting_categories.json
   def index
-    @painting_categories = PaintingCategory.all
   end
 
   # GET /painting_categories/1
@@ -25,44 +24,28 @@ class PaintingCategoriesController < ApplicationController
   # POST /painting_categories.json
   def create
     @painting_category = PaintingCategory.new(painting_category_params)
-
-    respond_to do |format|
-      if @painting_category.save
-        format.html { redirect_to painting_categories_url, notice: 'Painting category was successfully created.' }
-        format.json { render :show, status: :created, location: @painting_category }
-      else
-        format.html { render :new }
-        format.json { render json: @painting_category.errors, status: :unprocessable_entity }
-      end
-    end
+    @painting_category.save
   end
 
   # PATCH/PUT /painting_categories/1
   # PATCH/PUT /painting_categories/1.json
   def update
-    respond_to do |format|
-      if @painting_category.update(painting_category_params)
-        format.html { redirect_to painting_categories_url, notice: 'Painting category was successfully updated.' }
-        format.json { render :show, status: :ok, location: @painting_category }
-      else
-        format.html { render :edit }
-        format.json { render json: @painting_category.errors, status: :unprocessable_entity }
-      end
-    end
+    @painting_category.update(painting_category_params)
   end
 
   # DELETE /painting_categories/1
   # DELETE /painting_categories/1.json
   def destroy
     @painting_category.destroy
-    respond_to do |format|
-      format.html { redirect_to painting_categories_url, notice: 'Painting category was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    flash[:notice] = 'Painting category was successfully destroyed.'
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def painting_category_list
+      @painting_categories = PaintingCategory.order(created_at: :desc)
+    end
+
     def set_painting_category
       @painting_category = PaintingCategory.find(params[:id])
     end
