@@ -4,17 +4,23 @@
 	<td>
 		<div class="file-box">
 			<div class="file">
-				<%= link_to painting_path(painting) do %>
 				<span class="corner"></span>
+				<%= link_to edit_painting_path(painting) do %>
 				<div class="image">
 					<%= image_tag painting.image, alt: "image", class: "img-responsive"%>
 				</div>
-				<div class="file-name">
-					<%= painting.title %>
-					<br />
-					<small>Added: <%= painting.created_at.to_date %></small>
-				</div>
 				<%end%>
+				<div class="file-name">
+				<%= link_to edit_painting_path(painting) do %>
+					<%= painting_status(painting)%> <%= painting.title %>
+					<br />
+					<small><%= painting.created_at.strftime("%d %B %Y") %></small>
+				<%end%>
+				<div class="ibox-tools">
+				<%= link_to painting_path(painting), remote: true do %><i class="fa fa-search-plus fa-md"></i><%end%>
+				<%= link_to @painting, method: :delete, data:{ confirm: "Are you sure? "} do %><i class="fa fa-trash fa-md"></i><%end%>
+				</div>
+				</div>
 			</div>
 		</div>
 	</td>

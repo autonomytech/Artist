@@ -16,6 +16,9 @@
 //= require jquery.turbolinks
 //= require jquery.metisMenu
 //= require jquery.slimscroll.min.js
+//= require jquery.panzoom.min.js
+//= require jquery.mousewheel
+//= require image_zoom
 //= require pace.min.js
 //= require toastr.min.js
 //= require bootstrap-sprockets

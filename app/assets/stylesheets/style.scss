@@ -2559,6 +2559,16 @@ label.error {
   width: 200px;
 }
 
+.buttons{
+  position: fixed;
+  top: 50px;
+  left: 80px;
+}
+
+#focal{
+  padding: 20px;
+}
+
 /* Forum styles  */
 .forum-post-container .media {
   margin: 10px 10px 10px 10px;
@@ -3110,6 +3120,7 @@ video {
 
 .modal-dialog {
   z-index: 1200;
+  width: inherit;
 }
 
 .modal-body {

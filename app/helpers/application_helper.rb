@@ -16,47 +16,46 @@ module ApplicationHelper
   end
 
   def is_active_controller(controller_name)
-    params[:controller] == controller_name ? 'active' : nil
+    (params[:controller].eql? controller_name) ? 'active' : nil
   end
 
   def is_active_action(action_name)
-    params[:action] == action_name ? 'active' : nil
+    (params[:action].eql? action_name) ? 'active' : nil
   end
 
   def no_image_available(paintings)
     count = paintings.count
-    if count == 1
+    if count.eql? ONE
       html = <<-HTML
-        <td></td>
-        <td></td>
-        HTML
+      <td></td><td></td>
+      HTML
     else
       html = <<-HTML
         <td></td>
         HTML
     end
-    html.html_safe unless count == 3
+    html.html_safe unless count.eql? THREE
   end
 
   def profile_id
-    @profile ? @profile.id : 0
+    @profile ? @profile.id : ZERO
   end
 
-  def painting_status
-    case @painting.status
-    when 'available'
+  def painting_status(painting)
+    case painting.status
+    when 'Available'
       html = <<-HTML
         <i class="fa fa-circle text-navy"></i>
       HTML
-    when 'sold'
+    when 'Sold'
       html = <<-HTML
         <i class="fa fa-circle text-danger"></i>
       HTML
-    when 'hold'
+    when 'Hold'
       html = <<-HTML
         <i class="fa fa-circle text-default"></i>
       HTML
-    when 'reserved'
+    when 'Reserved'
       html = <<-HTML
         <i class="fa fa-circle text-warning"></i>
       HTML
@@ -66,11 +65,11 @@ module ApplicationHelper
 
   def profies_count
     count = @profiles.count
-    if count.eql? 0
+    if count.eql? ZERO
       html = <<-HTML
         <td></td><td></td>
       HTML
-    elsif count.eql? 1
+    elsif count.eql? ONE
       html = <<-HTML
         <td></td>
       HTML

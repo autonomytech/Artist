@@ -6,11 +6,10 @@ class Painting < ActiveRecord::Base
   , :status, presence: true
   validates_attachment_content_type :image\
   , content_type: ['image/jpg', 'image/jpeg', 'image/png', 'image/gif']
-  validates_presence_of :title
   scope :category_profile_list, -> { [Profile.list, PaintingCategory.list] }
   scope :date, -> { Date.today.strftime('%d%m%Y') }
   scope :set_ref_no, -> \
-  { first ? ([date, last.id].join) : ([date, 1].join) }
+  { first ? ([date, last.id].join) : ([date, ONE].join) }
   scope :list, -> { all.collect { |e| [e.title, e.id] } }
 
   def self.paintings(id, profile_id)

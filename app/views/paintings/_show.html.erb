@@ -1,0 +1,13 @@
+<script type="text/javascript" src="/assets/image_zoom.js"></script>
+<section id="focal">
+  <div class="parent">
+    <div class="panzoom">
+      <%= image_tag @painting.image %>
+    </div>
+  </div>
+  <div class="buttons pull-center">
+    <input type="range" class="zoom-range">
+    <button class="reset btn btn-xs btn-primary">Reset</button>
+    <%= link_to 'Close', '#',class: 'btn btn-xs btn-danger', :'data-dismiss'=>"modal"%>
+  </div>
+</section>
