@@ -1,7 +1,20 @@
-<%= bootstrap_form_for([@profile,@qualification]) do |f| %>
-    <%= f.text_field :qualification, placeholder: 'Qualification' %>
-    <%= f.text_field :college_name, placeholder: 'College Name' %>
-    <%= f.text_field :university, placeholder: 'University' %>
-    <%= f.text_field :year, placeholder: 'Year' %>
-    <%= f.submit 'Save', class: 'btn btn-sm btn-primary' %>
+<div class="row">
+<%= form_for([@profile,@qualification], remote: true) do |f| %>
+	<div class="col-md-2">
+	<%= f.text_field :qualification, placeholder: 'Qualification', class: 'form-control'%>
+	</div>
+	<div class="col-md-4">
+		<%= f.text_field :college_name, placeholder: 'College Name', class: 'form-control'%>
+	</div>
+	<div class="col-md-3">
+		<%= f.text_field :university, placeholder: 'University', class: 'form-control'%>
+	</div>
+	<div class="col-md-2">
+		<%= f.text_field :year, placeholder: 'Year', class: 'form-control' %>
+	</div>
+	<div class="col-md-1">
+		<%= f.submit 'Save', class: 'btn btn-sm btn-primary' %>
+	</div>
 <% end %>
+</div>
+<hr/>

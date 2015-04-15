@@ -126,7 +126,7 @@ ActiveRecord::Schema.define(version: 20150222153200) do
     t.string   "qualification"
     t.string   "college_name"
     t.string   "university"
-    t.decimal  "year"
+    t.string   "year"
     t.integer  "profile_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false

@@ -4,16 +4,12 @@ class ProfilesController < ApplicationController
   # GET /profiles
   # GET /profiles.json
   def index
-    @profiles = Profile.all
+    @profiles ||= Profile.all
   end
 
   # GET /profiles/1
   # GET /profiles/1.json
   def show
-    @qualification = @profile.qualifications.build
-    @qualifications = @profile.qualifications.all
-    @achievement = @profile.achievements.build
-    @achievements = @profile.achievements.all
   end
 
   # GET /profiles/new
@@ -32,12 +28,12 @@ class ProfilesController < ApplicationController
     respond_to do |format|
       if Profile.count < 2
         if @profile.save
-          format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
+          format.html { redirect_to edit_profile_path(@profile), notice: 'Profile was successfully created.' }
         else
           format.html { render :new }
         end
       else
-        format.html { redirect_to @profile, notice: 'You cannot create more profiles' }
+        format.html { redirect_to profiles_path, alert: 'You cannot create more profiles' }
       end
     end
   end
@@ -47,7 +43,7 @@ class ProfilesController < ApplicationController
   def update
     respond_to do |format|
       if @profile.update(profile_params)
-        format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
+        format.html { redirect_to edit_profile_path(@profile), notice: 'Profile was successfully updated.' }
         format.json { render :show, status: :ok, location: @profile }
       else
         format.html { render :edit }
@@ -67,13 +63,14 @@ class ProfilesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_profile
-      @profile = Profile.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def profile_params
-      params.require(:profile).permit(:first_name, :middle_name, :last_name, :email, :mobile_no, :address, :image)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_profile
+    @profile ||= Profile.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def profile_params
+    params.require(:profile).permit(:first_name, :middle_name, :last_name, :email, :mobile_no, :address, :image)
+  end
 end

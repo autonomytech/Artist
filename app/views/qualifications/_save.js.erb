@@ -1,0 +1,8 @@
+<% if @qualification.errors.any? %>
+  <% msg = @qualification.errors.full_messages.map { |m| "#{m}." }.join(" ") %>
+  artist_msg("<%= msg %>", 'error');
+<% else %>
+  artist_msg("Qualification was successfully <%= action %>.");
+  $('.profiles').html("<%= j render 'qualifications/qualification' %>");
+  $('.qua-form').html("");
+<% end %> 

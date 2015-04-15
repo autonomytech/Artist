@@ -11,7 +11,7 @@ function artist_msg(msg, type) {
             closeButton: true,
             progressBar: true,
             showMethod: 'slideDown',
-            timeOut: 2000
+            timeOut: 3000
         };
 
         if (type == 'error'){

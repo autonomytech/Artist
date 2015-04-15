@@ -1,0 +1,8 @@
+<% if @achievement.errors.any? %>
+  <% msg = @achievement.errors.full_messages.map { |m| "#{m}." }.join(" ") %>
+  artist_msg("<%= msg %>", 'error');
+<% else %>
+  artist_msg("Achievements was successfully <%= action %>.");
+  $('.prof').html("<%= j render 'achievements/achievement' %>");
+  $('.ach-form').html("");
+<% end %> 

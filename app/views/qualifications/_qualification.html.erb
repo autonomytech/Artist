@@ -1,7 +1,9 @@
+<% @profile.qualifications.each do |qualification|%>
 <tr>
 	<td><%= qualification.qualification %></td>
 	<td><%= qualification.college_name %></td>
 	<td><%= qualification.university %></td>
 	<td><%= qualification.year %></td>
-	<td><%= link_to [profile, qualification], method: :delete, data: { confirm: 'Are you sure?' } do %><i class="fa fa-trash fa-lg"></i><%end%></td>
+	<td><%= link_to edit_profile_qualification_path(@profile, qualification), remote: true do %><i class="fa fa-pencil fa-lg"></i><%end%>&nbsp;&nbsp;&nbsp;<%= link_to [@profile, qualification], method: :delete, data: { confirm: 'Are you sure?' }, remote: true do %><i class="fa fa-trash fa-lg"></i><%end%></td>
 </tr>
+<%end%>

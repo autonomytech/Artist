@@ -4,7 +4,7 @@ class CreateQualifications < ActiveRecord::Migration
       t.string :qualification
       t.string :college_name
       t.string :university
-      t.decimal :year
+      t.string :year
       t.references :profile, index: true
 
       t.timestamps null: false

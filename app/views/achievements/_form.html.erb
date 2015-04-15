@@ -1,6 +1,17 @@
-<%= bootstrap_form_for([@profile, @achievement]) do |f| %>
-  <%= f.text_field :name, placeholder: 'Name' %>
-  <%= f.date_field :date, class: 'date', placeholder: 'Date' %>
-  <%= f.text_area :details, placeholder: 'Details' %>
-  <%= f.submit 'Save', class: 'btn btn-sm btn-primary' %>
+<div class="row">
+<%= form_for([@profile, @achievement], remote: true) do |f| %>
+	<div class="col-md-3">
+		<%= f.text_field :name, placeholder: 'Name', class: 'form-control'%>
+	</div>
+	<div class="col-md-3">
+		<%= f.date_field :date, class: 'date', placeholder: 'Date', class: 'form-control'%>
+	</div>
+	<div class="col-md-5">
+		<%= f.text_field :details, placeholder: 'Details', class: 'form-control'%>
+	</div>
+	<div class="col-md-1">
+		<%= f.submit 'Save', class: 'btn btn-sm btn-primary' %>
+	</div>
 <% end %>
+</div>
+<hr/>
