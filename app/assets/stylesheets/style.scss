@@ -5867,8 +5867,8 @@ background-color: #FFCFD0;
 background-color: black;
 }
 
-.fc-today{
-    background-color: #CBC6AA;
+.fc-unthemed .fc-today{
+    background-color: #DFDBC5;
 }
 
 .fc-content:hover {
@@ -5880,4 +5880,28 @@ background-color: black;
 
 .fa-md {
   font-size: 1.5em;
+}
+
+.rails-bootstrap-forms-time-select{
+  display: flex;
+}
+
+#event_start_time_4i{
+  width: 80px;
+  margin-right: 10px;
+}
+
+#event_start_time_5i{
+  width: 80px;
+  margin-left: 10px;
+}
+
+#event_end_time_4i{
+  width: 80px;
+  margin-right: 10px;
+}
+
+#event_end_time_5i{
+  width: 80px;
+  margin-left: 10px;
 }

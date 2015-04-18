@@ -1,0 +1,15 @@
+<div class="ibox float-e-margins animated fadeInRight">
+  <div class="ibox-title">
+    <h5>Edit Events - <%= @event.title %></h5>
+    <div class="ibox-tools">
+    <%= link_to @event, method: :delete, remote: true, data: { confirm: 'Are you sure?' } do %><i class="fa fa-trash fa-md"></i>
+    <%end%>
+    <a class="close-link">
+        <i class="fa fa-times fa-md"></i>
+      </a>
+    </div>
+  </div>
+  <div class="ibox-content">
+    <%= render 'form' %>
+  </div>
+</div>

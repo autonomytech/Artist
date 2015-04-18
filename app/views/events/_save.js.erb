@@ -1,0 +1,9 @@
+<% if @event.errors.any? %>
+  <% msg = @event.errors.full_messages.map { |m| "#{m}." }.join(" ") %>
+  artist_msg("<%= msg %>", 'error');
+<% else %>
+    artist_msg("Painting category was successfully <%= action %>.");
+    $('.event-form').html(" ");
+    $('.ibox-content').html("<div id='calendar'></div>");
+    <%= render 'calendar'%>
+<%end%>

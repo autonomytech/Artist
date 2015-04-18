@@ -1,15 +1,19 @@
-<div class="row">
-  <div class="col-md-6">
-    <%= bootstrap_form_for(@event) do |f| %>
+<script type="text/javascript">
+    $(function () {
+        $('.close-link').click( function() {
+            var content = $(this).closest('div.ibox');
+            content.remove();
+        });
+    });
+</script>
+<%= bootstrap_form_for(@event, remote: true) do |f| %>
     <%= f.text_field :title, placeholder: 'Title' %>
     <%= f.text_field :start_date, class: 'date' %>
     <%= f.text_field :end_date, class: 'date' %>
-    <%= f.time_field :start_time %>
-    <%= f.time_field :end_time %>
+    <%= f.time_select :start_time%>
+    <%= f.time_select :end_time %>
     <%= f.text_area :description, placeholder: 'Description' %>
-    <%= f.select :profile_id, @profiles, prompt: true %>
+    <%= f.select :profile_id, @profiles, {prompt: true}, {required: true} %>
     <%= f.check_box :publish %>
     <%= f.submit 'Save', class: 'btn btn-primary' %>
-    <% end %>
-  </div>
-</div>
+<% end %>

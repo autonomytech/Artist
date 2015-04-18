@@ -113,6 +113,7 @@ $(function() {
     });
     
     $('.date').datepicker({
+        format: 'yyyy-mm-dd',
         todayBtn: "linked",
         keyboardNavigation: false,
         forceParse: false,
