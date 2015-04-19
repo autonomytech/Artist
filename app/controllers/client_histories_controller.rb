@@ -5,7 +5,7 @@ class ClientHistoriesController < ApplicationController
   # GET /client_histories
   # GET /client_histories.json
   def index
-    @client_histories = ClientHistory.all
+    @client_histories ||= ClientHistory.order(created_at: :desc)
   end
 
   # GET /client_histories/1
@@ -29,7 +29,7 @@ class ClientHistoriesController < ApplicationController
 
     respond_to do |format|
       if @client_history.save
-        format.html { redirect_to @client_history, notice: 'Client history was successfully created.' }
+        format.html { redirect_to client_histories_path, notice: 'Client history was successfully created.' }
         format.json { render :show, status: :created, location: @client_history }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class ClientHistoriesController < ApplicationController
   def update
     respond_to do |format|
       if @client_history.update(client_history_params)
-        format.html { redirect_to @client_history, notice: 'Client history was successfully updated.' }
+        format.html { redirect_to client_histories_path, notice: 'Client history was successfully updated.' }
         format.json { render :show, status: :ok, location: @client_history }
       else
         format.html { render :edit }
@@ -57,24 +57,24 @@ class ClientHistoriesController < ApplicationController
   def destroy
     @client_history.destroy
     respond_to do |format|
-      format.html { redirect_to client_histories_url, notice: 'Client history was successfully destroyed.' }
+      format.html { redirect_to client_histories_path, notice: 'Client history was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   def client_history_painting
-    @painting = Painting.find(params[:painting_id])
+    @painting ||= Painting.find(params[:painting_id])
   end
 
   private
 
   def set_list
-    @paintings = Painting.list
+    @paintings ||= Painting.list
   end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_client_history
-    @client_history = ClientHistory.find(params[:id])
+    @client_history ||= ClientHistory.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

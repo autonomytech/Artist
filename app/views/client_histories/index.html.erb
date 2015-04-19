@@ -19,31 +19,39 @@
       <div class="ibox float-e-margins">
         <div class="ibox-title">
           <h5>Listing Client Histories</h5>
+          <div class="ibox-tools">
+            <%= link_to new_client_history_path, class: 'btn btn-primary btn-xs' do %><i class="fa fa-plus"></i><% end %>
+          </div>
         </div>
         <div class="ibox-content">
-          <div class="">
-            <%= link_to 'Add Client', new_client_history_path, class: 'btn btn-primary' %>
-          </div>
           <table class="table table-hover table-striped">
             <thead>
               <tr>
-                <th>Payment Status</th>
-                <th>Client Details</th>
-                <th>Painting</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
               <% @client_histories.each do |client_history| %>
                 <tr>
-                  <td class="project-status">
-                    <span class="label label-primary label-blog"> <%= client_history.payment_status %></span>
-                  </td>
-                  <td class="project-title">
-                    <%= link_to client_history.name, client_history_path(client_history) %>
-                    <br/>Email: <%= client_history.email %>
-                    <br/>Mobile No: <%= client_history.mobile_no %>
+                  <td>
+                    <div class="ibox-tools pull-left">
+                      <%= link_to client_history, method: :delete, data: { confirm: 'Are you sure?' } do %><i class="fa fa-trash fa-md"></i><%end%>
+                    </div>
                   </td>
                   <td>
+                    <%= link_to edit_client_history_path(client_history) do %>
+                    <div class="project-title">
+                      <h4><%= client_history.name %></h4>
+                      <%= client_history.email %><br/>
+                      <%= client_history.mobile_no %>
+                    </div>
+                    <%end%>
+                  </td>
+                  <td>
+                    <%= link_to edit_client_history_path(client_history) do %>
                     <div class="file-box">
                       <div class="file">
                         <div class="image">
@@ -51,6 +59,10 @@
                         </div>
                       </div>
                     </div>
+                    <%end%>
+                  </td>
+                  <td class="project-status">
+                    <%= client_history.payment_status %>
                   </td>
                 </tr>
               <%end%>

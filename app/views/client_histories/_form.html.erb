@@ -2,22 +2,16 @@
   <div class="col-md-4">
     <%= bootstrap_form_for(@client_history) do |f| %>
     <%= f.text_field :name, placeholder: 'Name' %>
-    <%= f.text_field :email, placeholder: 'Email' %>
+    <%= f.email_field :email, placeholder: 'Email' %>
     <%= f.text_field :mobile_no, placeholder: 'Mobile No' %>
     <%= f.text_field :payment_status, placeholder: 'Payment Status' %>
-    <%= f.select :painting_id, @paintings, {prompt: true}, {onchange: "painting_client_history();"} %>    
+    <%= f.select :painting_id, @paintings, {prompt: true}, {onchange: "painting_client_history();", required: true} %>    
     <%= f.submit 'Save', class: 'btn btn-primary' %>
     <% end %>
   </div>
   <div class="col-md-8">
     <div class="img-crop">
-      <%= image_tag (@client_history.painting ? @client_history.painting.image : ''), width: 500 %>
+      <%= image_tag (@client_history.painting ? @client_history.painting.image : ''), width: 600 %>
     </div>
   </div>
 </div>
-<script type="text/javascript">
-  function painting_client_history(){
-    var a = { painting_id: $('#client_history_painting_id').val() };
-    $.get('client_history_painting',a,function(){});
-  }
-</script>

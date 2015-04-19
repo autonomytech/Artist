@@ -12,6 +12,11 @@ ckeditor = function(){
 $(document).ready(ckeditor);
 $(document).on('page:load',ckeditor);
 
+function painting_client_history(){
+    var a = { painting_id: $('#client_history_painting_id').val() };
+    $.get('/client_histories/client_history_painting',a,function(){});
+}
+
 function artist_msg(msg, type) {
     setTimeout(function() {
         toastr.options = {
