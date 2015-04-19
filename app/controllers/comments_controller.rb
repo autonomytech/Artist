@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment.all
+    @comments ||= Comment.all
   end
 
   # GET /comments/1
@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @blog = Blog.find(params[:blog_id])
+    @blog ||= Blog.find(params[:blog_id])
     @comment = @blog.comments.new(comment_params)
     @comment.name, @comment.email = \
     Profile.artist_comment(params[:profile][:id]) if params[:profile]
@@ -56,8 +56,8 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy
-    @blog = Blog.find(params[:blog_id])
-    @comment = @blog.comments.find(params[:id])
+    @blog ||= Blog.find(params[:blog_id])
+    @comment ||= @blog.comments.find(params[:id])
     @comment.destroy
     respond_to do |format|
       format.html { redirect_to @blog, notice: 'Comment was successfully destroyed.' }
@@ -66,13 +66,14 @@ class CommentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_comment
-      @comment = Comment.find(params[:id])
-    end
+  
+  # Use callbacks to share common setup or constraints between actions.
+  def set_comment
+    @comment ||= Comment.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def comment_params
-      params.require(:comment).permit(:name, :email, :comment, :like, :dislike)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def comment_params
+    params.require(:comment).permit(:name, :email, :comment, :like, :dislike)
+  end
 end

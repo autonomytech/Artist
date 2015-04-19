@@ -47,6 +47,7 @@ group :development, :test do
 end
 gem 'devise'
 gem 'paperclip'
+gem 'ckeditor_rails'
 gem 'imagemagick-binaries'
 gem 'bootstrap_form'
 gem 'html5_validators'

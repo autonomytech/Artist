@@ -9,7 +9,7 @@ class Painting < ActiveRecord::Base
   scope :category_profile_list, -> { [Profile.list, PaintingCategory.list] }
   scope :date, -> { Date.today.strftime('%d%m%Y') }
   scope :set_ref_no, -> \
-  { first ? ([date, last.id].join) : ([date, ONE].join) }
+  { first ? ([date, last.id.next].join) : ([date, ONE].join) }
   scope :list, -> { all.collect { |e| [e.title, e.id] } }
 
   def self.paintings(id, profile_id)

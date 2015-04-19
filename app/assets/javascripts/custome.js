@@ -5,6 +5,13 @@ datatable = function(){
 $(document).ready(datatable);
 $(document).on('page:load',datatable);
 
+var ckeditor;
+ckeditor = function(){
+  $('.ckeditor').ckeditor();
+}
+$(document).ready(ckeditor);
+$(document).on('page:load',ckeditor);
+
 function artist_msg(msg, type) {
     setTimeout(function() {
         toastr.options = {

@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20150222153200) do
   create_table "blogs", force: :cascade do |t|
     t.string   "title"
     t.text     "content"
+    t.integer  "profile_id"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -39,6 +40,8 @@ ActiveRecord::Schema.define(version: 20150222153200) do
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
   end
+
+  add_index "blogs", ["profile_id"], name: "index_blogs_on_profile_id", using: :btree
 
   create_table "client_histories", force: :cascade do |t|
     t.string   "name"
@@ -162,6 +165,7 @@ ActiveRecord::Schema.define(version: 20150222153200) do
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
   add_foreign_key "achievements", "profiles"
+  add_foreign_key "blogs", "profiles"
   add_foreign_key "client_histories", "paintings"
   add_foreign_key "comments", "blogs"
   add_foreign_key "events", "profiles"

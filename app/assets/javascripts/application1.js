@@ -18,6 +18,7 @@
 //= require jquery.slimscroll.min.js
 //= require jquery.panzoom.min.js
 //= require jquery.mousewheel
+//= require ckeditor-jquery
 //= require image_zoom
 //= require pace.min.js
 //= require toastr.min.js

@@ -1,19 +1,18 @@
-# 
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
+  before_action :set_list, only: [:new, :create, :edit, :update, :show]
 
   # GET /blogs
   # GET /blogs.json
   def index
-    @blogs = Blog.all
+    @blogs ||= Blog.order(created_at: :desc)
   end
 
   # GET /blogs/1
   # GET /blogs/1.json
   def show
     @comment = @blog.comments.build
-    @comments = @blog.comments.all
-    @profiles = Profile.list
+    @comments ||= @blog.comments.all
   end
 
   # GET /blogs/new
@@ -66,23 +65,28 @@ class BlogsController < ApplicationController
   end
 
   def like
-    @blog = Blog.find(params[:blog_id])
+    @blog ||= Blog.find(params[:blog_id])
     @blog.update(like: @blog.like.next)
   end
 
   def dislike
-    @blog = Blog.find(params[:blog_id])
+    @blog ||= Blog.find(params[:blog_id])
     @blog.update(dislike: @blog.dislike.next)
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_blog
-      @blog = Blog.find(params[:id])
-    end
+  
+  def set_list
+    @profiles ||= Profile.list
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def blog_params
-      params.require(:blog).permit(:title, :content, :image, :like, :dislike)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_blog
+    @blog ||= Blog.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def blog_params
+    params.require(:blog).permit(:title, :content, :image, :like, :dislike, :profile_id)
+  end
 end
