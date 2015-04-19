@@ -2,6 +2,7 @@
  *= require font-awesome
  *= require fullcalendar
  *= require dataTables/jquery.dataTables
+ *= require pace
  *= require animate
  *= require animate.min.css
  *= require cropper.min.css
