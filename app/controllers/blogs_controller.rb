@@ -12,7 +12,9 @@ class BlogsController < ApplicationController
   # GET /blogs/1.json
   def show
     @comment = @blog.comments.build
-    @comments ||= @blog.comments.all
+    @comments ||= @blog.comments.order(created_at: :desc)
+    comments ||= @comments.where(is_readed: false) unless @comments.blank?
+    comments.each { |c| c.update(is_readed: true) } unless comments.blank?
   end
 
   # GET /blogs/new

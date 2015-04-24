@@ -1,5 +1,5 @@
 class Blog < ActiveRecord::Base
-  has_many :comments
+  has_many :comments, dependent: :destroy
   belongs_to :profile
   has_attached_file :image
   validates :title, :content, presence: true

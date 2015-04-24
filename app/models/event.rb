@@ -30,4 +30,14 @@ class Event < ActiveRecord::Base
   def e_date
     end_date.strftime('%d, %B %Y')
   end
+
+  def self.today_events
+    date = Date.today.to_date
+    where('end_date >= ? AND start_date <= ?', date, date)
+  end
+
+  def self.upcoming_events
+    date = Date.today.to_date
+    where('start_date > ?', date).limit(10)
+  end
 end

@@ -1,6 +1,7 @@
 class Painting < ActiveRecord::Base
   belongs_to :profile
   belongs_to :painting_category
+  has_many :client_histories, dependent: :destroy
   has_attached_file :image
   validates :title, :profile_id, :painting_category_id\
   , :status, presence: true

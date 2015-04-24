@@ -5,7 +5,7 @@ ready = function(){
     
 	 	dayClick: function(date) {
             var a = {date: date.format()};
-            $.get('events/new',a,function(response){
+            $.get('/events/new',a,function(response){
             });
     	},
         events: '/events.json',
@@ -22,7 +22,7 @@ ready = function(){
         },
         eventClick: function(event) {
            $.ajax({
-              url: "events/" + event.id +"/edit"
+              url: "/events/" + event.id +"/edit"
             });
         }
 	});

@@ -1,0 +1,124 @@
+<div class="sidebard-panel">
+    <div>
+        <h4>Comments <span class="badge badge-info pull-right"><%= @comments.count %></span></h4>
+        <small><i><%= 'No new comments' if @comments.blank? %></i></small>
+        <% @comments.each do |comment|%>
+        <div class="feed-element">
+          <%= link_to blog_comment_path(comment.blog, comment) do %>
+          <div class="media-body">
+            <small class="pull-right"><%= time_ago_in_words(comment.created_at)%> ago</small>
+            <strong><%= comment.name %></strong><br>posted a comment on<br><%= comment.blog.title %> blog. <br>
+            <small class="text-muted"><%= comment.created_at.strftime("%A %d, %B %Y")%></small>
+        </div>
+        <%end%>
+    </div>
+    <%end%>
+</div>
+</div>
+<div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-lg-5">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Upcoming Events</h5>
+                </div>
+                <div class="ibox-content ibox-heading">
+                    <h3>You have events today!</h3>
+                    <small><i><%= 'Today no events' if @today_events.blank? %></i></small>
+                    <% @today_events.each do |event|%>
+                    <small><i class="fa fa-map-marker"></i> <b><%= event.title %></b> is on <%= event.s_time%> to <%= event.e_time%>. <b><%= event.artist%></b> check your schedule to see detail.</small>
+                    <br/>
+                    <%end%>
+                </div>
+                <div class="ibox-content inspinia-timeline">
+                    <% @today_events.each do |event|%>
+                    <div class="timeline-item">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-briefcase"></i>
+                                <%= event.s_time%> To <%= event.e_time%>
+                                <br />
+                                <small class="text-navy">Today</small>
+                            </div>
+                            <div class="col-xs-7 content no-top-border">
+                                <p class="m-b-xs"><strong><%= event.title %></strong></p>
+                                <p>
+                                    <%= event.description %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <%end%>
+                    <% @upcoming_events.each do |event|%>
+                    <div class="timeline-item">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-briefcase"></i>
+                                <%= event.s_time%> To <%= event.e_time%>
+                                <br />
+                                <small class="text-navy"><%= event.s_date%></small>
+                            </div>
+                            <div class="col-xs-7 content no-top-border">
+                                <p class="m-b-xs"><strong><%= event.title %></strong></p>
+                                <p>
+                                    <%= event.description %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <%end%>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Blog History</h5>
+                    <div class="ibox-tool">
+                        <div class="pull-right forum-desc">
+                            <samll>Total blogs: <%= @count %></samll>
+                        </div>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <small><i><%= 'No blog history' if @blogs.blank? %></i></small>
+                    <% @blogs.each do |blog| %>
+                    <div class="forum-item active">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <%= link_to blog.title, blog_path(blog), class: "forum-item-title"%>
+                            </div>
+                        </div><br/>
+                        <div class="row">
+                            <div class="col-md-2 forum-info">
+                                <span class="views-number">
+                                    <%= blog.like %>
+                                </span>
+                                <div>
+                                    <small>Like</small>
+                                </div>
+                            </div>
+                            <div class="col-md-2 forum-info">
+                                <span class="views-number">
+                                    <%= blog.dislike %>
+                                </span>
+                                <div>
+                                    <small>Dislike</small>
+                                </div>
+                            </div>
+                            <div class="col-md-2 forum-info">
+                                <span class="views-number">
+                                    <%= blog.comments.count %>
+                                </span>
+                                <div>
+                                    <small>Comments</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <%end%>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

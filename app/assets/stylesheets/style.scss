@@ -2637,7 +2637,7 @@ label.error {
 }
 
 .views-number {
-  font-size: 24px;
+  font-size: 20px;
   line-height: 18px;
   font-weight: 400;
 }
@@ -2677,7 +2677,7 @@ label.error {
 a.forum-item-title {
   color: inherit;
   display: block;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 600;
 }
 
@@ -5903,4 +5903,8 @@ background-color: black;
 #event_end_time_5i{
   width: 80px;
   margin-left: 10px;
+}
+
+.feed-element a {
+  color: #676a6c;
 }

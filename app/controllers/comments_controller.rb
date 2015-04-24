@@ -10,6 +10,8 @@ class CommentsController < ApplicationController
   # GET /comments/1
   # GET /comments/1.json
   def show
+    @comment.update(is_readed: true)
+    redirect_to blog_path(@comment.blog)
   end
 
   # GET /comments/new
@@ -30,7 +32,7 @@ class CommentsController < ApplicationController
     Profile.artist_comment(params[:profile][:id]) if params[:profile]
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to blog_path(@blog), notice: 'Comment was successfully created.' }
+        format.html { redirect_to blog_path(@blog), notice: 'Comment was successfully posted.' }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }

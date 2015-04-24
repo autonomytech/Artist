@@ -18,7 +18,7 @@
 				<%end%>
 				<div class="ibox-tools">
 				<%= link_to painting_path(painting), remote: true do %><i class="fa fa-search-plus fa-md"></i><%end%>
-				<%= link_to @painting, method: :delete, data:{ confirm: "Are you sure? "} do %><i class="fa fa-trash fa-md"></i><%end%>
+				<%= link_to painting, method: :delete, data:{ confirm: "Are you sure? "} do %><i class="fa fa-trash fa-md"></i><%end%>
 				</div>
 				</div>
 			</div>
