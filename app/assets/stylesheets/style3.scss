@@ -220,6 +220,12 @@ h1 {
   background: url('../assets/6.jpg') 50% 0 no-repeat;
 }
 
+.header-back-3 {
+  height: 400px;
+  width: 100%;
+  background: url("../assets/header_two.jpg") 50% 0 no-repeat;
+}
+
 .header-back.one {
   background: url('../assets/6.jpg') 50% 0 no-repeat;
 }
@@ -969,4 +975,8 @@ li.pricing-title {
 
 .pace-inactive {
   display: none;
+}
+
+.tab-name{
+  color: #000;
 }
