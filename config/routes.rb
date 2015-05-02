@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     collection do
       get :like
       get :dislike
+      get :post
     end
     resources :comments
   end
