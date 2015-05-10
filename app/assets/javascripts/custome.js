@@ -54,7 +54,7 @@ $(function() {
           var im = fileReader.readAsDataURL(file);
           fileReader.onload = function () {
             $(".img-crop > img").attr('src', this.result);
-            $(".img-crop > img").attr('width', 600);
+            $(".img-crop > img").attr('class', 'img-responsive');
           };
         } else {
           showMessage("Please choose an image file.");

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150421175336) do
+ActiveRecord::Schema.define(version: 20150510084306) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,21 @@ ActiveRecord::Schema.define(version: 20150421175336) do
   end
 
   add_index "achievements", ["profile_id"], name: "index_achievements_on_profile_id", using: :btree
+
+  create_table "addresses", force: :cascade do |t|
+    t.string   "street"
+    t.string   "city"
+    t.string   "state"
+    t.string   "pincode"
+    t.string   "country"
+    t.integer  "client_history_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "profile_id"
+  end
+
+  add_index "addresses", ["client_history_id"], name: "index_addresses_on_client_history_id", using: :btree
+  add_index "addresses", ["profile_id"], name: "index_addresses_on_profile_id", using: :btree
 
   create_table "blogs", force: :cascade do |t|
     t.string   "title"
@@ -94,7 +109,6 @@ ActiveRecord::Schema.define(version: 20150421175336) do
     t.string   "title"
     t.integer  "profile_id"
     t.string   "ref_no"
-    t.decimal  "size"
     t.string   "style"
     t.text     "details"
     t.string   "medium"
@@ -104,8 +118,14 @@ ActiveRecord::Schema.define(version: 20150421175336) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "painting_category_id"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.string   "price"
+    t.boolean  "price_on_request",     default: false
+    t.string   "year"
+    t.string   "width"
+    t.string   "height"
+    t.string   "packing_type"
   end
 
   add_index "paintings", ["painting_category_id"], name: "index_paintings_on_painting_category_id", using: :btree
@@ -117,7 +137,6 @@ ActiveRecord::Schema.define(version: 20150421175336) do
     t.string   "last_name"
     t.string   "email"
     t.string   "mobile_no"
-    t.text     "address"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -166,6 +185,8 @@ ActiveRecord::Schema.define(version: 20150421175336) do
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
   add_foreign_key "achievements", "profiles"
+  add_foreign_key "addresses", "client_histories"
+  add_foreign_key "addresses", "profiles"
   add_foreign_key "blogs", "profiles"
   add_foreign_key "client_histories", "paintings"
   add_foreign_key "comments", "blogs"

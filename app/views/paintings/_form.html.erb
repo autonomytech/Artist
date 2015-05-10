@@ -7,8 +7,35 @@
         <%= f.select :profile_id, @paintings_category_profile[0], {prompt: true}, {required: true} %>
         <%= f.select :painting_category_id, @paintings_category_profile[1], {prompt: true}, {required: true} %>
         <%= f.text_field :ref_no, readonly: true %>
-        <%= f.text_field :size, placeholder: 'Size' %>
+        <%= f.select :year, YEAR, {prompt: true}, {required: true} %>
+        <%= label_tag "size_in_inches (width X height)"%>
+        <div class="row">
+        <div class="col-md-5">
+        <div class="input-group">
+        <%= text_field :painting, :width, placeholder: 'Width', class: 'form-control', :'aria-describedby'=>"basic-addon2" %><span class="input-group-addon" id="basic-addon2">inch</span>
+        </div>
+        </div>
+        <div class="col-md-1"><%= label_tag 'X'%></div>
+        <div class="col-md-5">
+        <div class="input-group">
+        <%= text_field :painting, :height, placeholder: 'Height', class: 'form-control', :'aria-describedby'=>"basic-addon2" %><span class="input-group-addon" id="basic-addon2">inch</span>
+        </div>
+        </div>
+        </div><br/>
+        <%= label_tag :price %>
+        <div class="row">
+        <div class="col-md-7">
+        <div class="input-group">
+        <%= text_field :painting, :price, placeholder: 'Price', class: 'form-control', :'aria-describedby'=>"basic-addon2" %>
+        <span class="input-group-addon" id="basic-addon2">Rs.</span>
+        </div>
+        </div>
+        <div class="col-md-5">
+        <%= f.check_box :price_on_request %>
+        </div>
+        </div><br/>
         <%= f.text_field :style, placeholder: 'Style' %>
+        <%= f.select :packing_type, PACKING_TYPE, {prompt: true}, {required: true} %>
         <%= f.text_area :details, placeholder: 'Details' %>
         <%= f.text_field :medium, placeholder: 'Medium' %>
         <%= f.select :status, STATUS, {prompt: true}, {required: true} %>
@@ -17,7 +44,7 @@
       <div class="col-md-6">
         <%= f.file_field :image, class: 'input_image btn btn-info', label: 'Upload new image'%>
         <div class="img-crop">
-          <%= image_tag (@painting.image? ? @painting.image : ''), width: 600 %>
+          <%= image_tag (@painting.image? ? @painting.image : ''), class: "img-responsive"%>
         </div>
       </div>
     </div>

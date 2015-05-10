@@ -16,6 +16,7 @@ class ClientHistoriesController < ApplicationController
   # GET /client_histories/new
   def new
     @client_history = ClientHistory.new
+    @client_history.addresses.build
   end
 
   # GET /client_histories/1/edit
@@ -42,6 +43,7 @@ class ClientHistoriesController < ApplicationController
   # PATCH/PUT /client_histories/1.json
   def update
     respond_to do |format|
+      @client_history.addresses.destroy_all
       if @client_history.update(client_history_params)
         format.html { redirect_to client_histories_path, notice: 'Client history was successfully updated.' }
         format.json { render :show, status: :ok, location: @client_history }
@@ -79,6 +81,8 @@ class ClientHistoriesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def client_history_params
-    params.require(:client_history).permit(:name, :email, :mobile_no, :payment_status, :painting_id)
+    params.require(:client_history).permit(:name, :email\
+      , :mobile_no, :payment_status, :painting_id\
+      , addresses_attributes: [:street, :city, :state, :pincode, :country])
   end
 end

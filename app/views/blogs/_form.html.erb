@@ -9,7 +9,7 @@
 	<div class="col-md-6">
 		<%= f.file_field :image, class: 'input_image btn btn-info', label: 'Upload new image'%>
 		<div class="img-crop">
-			<%= image_tag (@blog.image? ? @blog.image : ''), width: 600 %>
+			<%= image_tag (@blog.image? ? @blog.image : ''), class: 'img-responsive'%>
 		</div>
 	</div>
 	<% end %>

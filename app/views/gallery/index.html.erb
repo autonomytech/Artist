@@ -13,24 +13,11 @@
         </div>
     </div>
     <div class="row">
+    	<% @latest_paintings.each do |lp| %>
 		<div class="col-md-2 col-sm-4 col-xs-6">
-		  <%= image_tag 'p1.jpg', class: "img-responsive customer-img"%>
+		  <%= image_tag lp.image, class: "img-responsive customer-img"%>
 		</div>
-		<div class="col-md-2 col-sm-4 col-xs-6">
-		  <%= image_tag 'p2.jpg', class: "img-responsive customer-img"%>
-		</div>
-		<div class="col-md-2 col-sm-4 col-xs-6">
-		  <%= image_tag 'p3.jpg', class: "img-responsive customer-img"%>
-		</div>
-		<div class="col-md-2 col-sm-4 col-xs-6">
-		  <%= image_tag 'p4.jpg', class: "img-responsive customer-img"%>
-		</div>
-		<div class="col-md-2 col-sm-4 col-xs-6">
-		  <%= image_tag 'p5.jpg', class: "img-responsive customer-img"%>
-		</div>
-		<div class="col-md-2 col-sm-4 col-xs-6">
-		  <%= image_tag 'p6.jpg', class: "img-responsive customer-img"%>
-		</div>
+		<%end%>
 	</div>
 
 	<!-- Service Tabs -->
@@ -43,245 +30,73 @@
 	    </div>
 		<div class="col-lg-12">
 			<ul class="nav nav-tabs nav-justified">
-				<li class="active"><a href="#service-one" data-toggle="tab"><i class="fa fa-user"></i> Arvind Kolhpkar</a>
+				<li class="active"><a href="#service-one" data-toggle="tab"><i class="fa fa-user"></i> <%= @first_artist.full_name%></a>
 				</li>
-				<li class=""><a href="#service-two" data-toggle="tab"><i class="fa fa-user"></i> Harshda Kolhpkar</a>
+				<li class=""><a href="#service-two" data-toggle="tab"><i class="fa fa-user"></i> <%= @last_artist.full_name%></a>
 				</li>
 			</ul>
 
 			<div id="myTabContent" class="tab-content">
 				<div class="tab-pane fade active in" id="service-one">
 					<div class="col-md-2">
-	                    <img src="/assets/avatar1.jpg" class="img-responsive img-circle" alt="">
+						<%= image_tag @first_artist.image, class: "img-responsive img-circle"%>
 	                </div>
 	                <div class="col-md-10">
+	                <br/>
 	                <h5 class="tag-title">Categories</h5>
-                        <ul class="tag-list" style="padding: 0">
-                            <li><a href=""><i class="fa fa-tag"></i> Family</a></li>
-                            <li><a href=""><i class="fa fa-tag"></i> Work</a></li>
-                            <li><a href=""><i class="fa fa-tag"></i> Home</a></li>
-                            <li><a href=""><i class="fa fa-tag"></i> Children</a></li>
-                            <li><a href=""><i class="fa fa-tag"></i> Holidays</a></li>
-                            <li><a href=""><i class="fa fa-tag"></i> Music</a></li>
-                            <li><a href=""><i class="fa fa-tag"></i> Photography</a></li>
-                            <li><a href=""><i class="fa fa-tag"></i> Film</a></li>
+                        <ul class="tag-list" style="padding:0">
+                        <% @first_artist.categories.each do |c|%>
+                        	<li>
+                        		<%= link_to '#' do %><i class="fa fa-tag"></i> <%= c.name%><%end%>
+                        	</li>
+                        <%end%>
                         </ul>
                     </div>
-                    	                <div class="col-lg-12">
+                    <div class="col-lg-12">
 						<h2 class="page-header">Category List</h2>
 					</div>
+					<div class="col-lg-12">
+					<% @first_artist.categories.each do |c|%>
 					<div class="col-md-3 img-portfolio">
-						<a href="portfolio-item.html">
-							<%= image_tag 'p6.jpg', class: "img-responsive customer-img"%>
-						</a>
+						<%= link_to '#' do %>
+							<%= image_tag c.image(@first_artist.id), class: "img-responsive customer-img"%>
+						<%end%>
 						<h4>
-							<a href="portfolio-item.html">Project Name</a>
+						  <%= link_to c.name, '#'%>
 						</h4>
 					</div>
-					<div class="col-md-3 img-portfolio">
-						<a href="portfolio-item.html">
-							<%= image_tag 'p5.jpg', class: "img-responsive customer-img"%>
-						</a>
-						<h4>
-							<a href="portfolio-item.html">Project Name</a>
-						</h4>
-					</div>
-					<div class="col-md-3 img-portfolio">
-						<a href="portfolio-item.html">
-							<%= image_tag 'p4.jpg', class: "img-responsive customer-img"%>
-						</a>
-						<h4>
-							<a href="portfolio-item.html">Project Name</a>
-						</h4>
-					</div>
-					<div class="col-md-3 img-portfolio">
-						<a href="portfolio-item.html">
-							<%= image_tag 'p3.jpg', class: "img-responsive customer-img"%>
-						</a>
-						<h4>
-							<a href="portfolio-item.html">Project Name</a>
-						</h4>
-					</div>
-					<div class="col-md-3 img-portfolio">
-						<a href="portfolio-item.html">
-							<%= image_tag 'p2.jpg', class: "img-responsive customer-img"%>
-						</a>
-						<h4>
-							<a href="portfolio-item.html">Project Name</a>
-						</h4>
-					</div>
-					<div class="col-md-3 img-portfolio">
-						<a href="portfolio-item.html">
-							<%= image_tag 'p1.jpg', class: "img-responsive customer-img"%>
-						</a>
-						<h4>
-							<a href="portfolio-item.html">Project Name</a>
-						</h4>
-					</div>
-					<div class="col-md-3 img-portfolio">
-						<a href="portfolio-item.html">
-							<%= image_tag 'p2.jpg', class: "img-responsive customer-img"%>
-						</a>
-						<h4>
-							<a href="portfolio-item.html">Project Name</a>
-						</h4>
-					</div>
-					<div class="col-md-3 img-portfolio">
-						<a href="portfolio-item.html">
-							<%= image_tag 'p3.jpg', class: "img-responsive customer-img"%>
-						</a>
-						<h4>
-							<a href="portfolio-item.html">Project Name</a>
-						</h4>
-					</div>
-					<div class="col-md-3 img-portfolio">
-						<a href="portfolio-item.html">
-							<%= image_tag 'p4.jpg', class: "img-responsive customer-img"%>
-						</a>
-						<h4>
-							<a href="portfolio-item.html">Project Name</a>
-						</h4>
-					</div>
-					<div class="col-md-3 img-portfolio">
-						<a href="portfolio-item.html">
-							<%= image_tag 'p5.jpg', class: "img-responsive customer-img"%>
-						</a>
-						<h4>
-							<a href="portfolio-item.html">Project Name</a>
-						</h4>
-					</div>
-					<div class="col-md-3 img-portfolio">
-						<a href="portfolio-item.html">
-							<%= image_tag 'p6.jpg', class: "img-responsive customer-img"%>
-						</a>
-						<h4>
-							<a href="portfolio-item.html">Project Name</a>
-						</h4>
-					</div>
-					<div class="col-md-3 img-portfolio">
-						<a href="portfolio-item.html">
-							<%= image_tag 'p1.jpg', class: "img-responsive customer-img"%>
-						</a>
-						<h4>
-							<a href="portfolio-item.html">Project Name</a>
-						</h4>
+					<% end %>
 					</div>
 				</div>
 				<div class="tab-pane fade" id="service-two">
 					<div class="col-md-2">
-	                    <img src="/assets/avatar3.jpg" class="img-responsive img-circle" alt="">
+						<%= image_tag @last_artist.image, class: "img-responsive img-circle"%>
 	                </div>
 	                <div class="col-md-10">
-	                	<h5 class="tag-title">Categories</h5>
-                        <ul class="tag-list" style="padding: 0">
-                            <li><a href=""><i class="fa fa-tag"></i> Family</a></li>
-                            <li><a href=""><i class="fa fa-tag"></i> Work</a></li>
-                            <li><a href=""><i class="fa fa-tag"></i> Home</a></li>
-                            <li><a href=""><i class="fa fa-tag"></i> Children</a></li>
-                            <li><a href=""><i class="fa fa-tag"></i> Holidays</a></li>
-                            <li><a href=""><i class="fa fa-tag"></i> Music</a></li>
-                            <li><a href=""><i class="fa fa-tag"></i> Photography</a></li>
-                            <li><a href=""><i class="fa fa-tag"></i> Film</a></li>
+	                <br/>
+	                <h5 class="tag-title">Categories</h5>
+                        <ul class="tag-list" style="padding:0">
+                        <% @last_artist.categories.each do |c|%>
+                        	<li>
+                        		<%= link_to '#' do %><i class="fa fa-tag"></i> <%= c.name%><%end%>
+                        	</li>
+                        <%end%>
                         </ul>
-	                </div>
-	                <div class="col-lg-12">
+                    </div>
+                    <div class="col-lg-12">
 						<h2 class="page-header">Category List</h2>
 					</div>
+					<div class="col-lg-12">
+					<% @last_artist.categories.each do |c|%>
 					<div class="col-md-3 img-portfolio">
-						<a href="portfolio-item.html">
-							<%= image_tag 'p6.jpg', class: "img-responsive customer-img"%>
-						</a>
+						<%= link_to '#' do %>
+							<%= image_tag c.image(@last_artist.id), class: "img-responsive customer-img"%>
+						<%end%>
 						<h4>
-							<a href="portfolio-item.html">Project Name</a>
+						  <%= link_to c.name, '#'%>
 						</h4>
 					</div>
-					<div class="col-md-3 img-portfolio">
-						<a href="portfolio-item.html">
-							<%= image_tag 'p5.jpg', class: "img-responsive customer-img"%>
-						</a>
-						<h4>
-							<a href="portfolio-item.html">Project Name</a>
-						</h4>
-					</div>
-					<div class="col-md-3 img-portfolio">
-						<a href="portfolio-item.html">
-							<%= image_tag 'p4.jpg', class: "img-responsive customer-img"%>
-						</a>
-						<h4>
-							<a href="portfolio-item.html">Project Name</a>
-						</h4>
-					</div>
-					<div class="col-md-3 img-portfolio">
-						<a href="portfolio-item.html">
-							<%= image_tag 'p3.jpg', class: "img-responsive customer-img"%>
-						</a>
-						<h4>
-							<a href="portfolio-item.html">Project Name</a>
-						</h4>
-					</div>
-					<div class="col-md-3 img-portfolio">
-						<a href="portfolio-item.html">
-							<%= image_tag 'p2.jpg', class: "img-responsive customer-img"%>
-						</a>
-						<h4>
-							<a href="portfolio-item.html">Project Name</a>
-						</h4>
-					</div>
-					<div class="col-md-3 img-portfolio">
-						<a href="portfolio-item.html">
-							<%= image_tag 'p1.jpg', class: "img-responsive customer-img"%>
-						</a>
-						<h4>
-							<a href="portfolio-item.html">Project Name</a>
-						</h4>
-					</div>
-					<div class="col-md-3 img-portfolio">
-						<a href="portfolio-item.html">
-							<%= image_tag 'p2.jpg', class: "img-responsive customer-img"%>
-						</a>
-						<h4>
-							<a href="portfolio-item.html">Project Name</a>
-						</h4>
-					</div>
-					<div class="col-md-3 img-portfolio">
-						<a href="portfolio-item.html">
-							<%= image_tag 'p3.jpg', class: "img-responsive customer-img"%>
-						</a>
-						<h4>
-							<a href="portfolio-item.html">Project Name</a>
-						</h4>
-					</div>
-					<div class="col-md-3 img-portfolio">
-						<a href="portfolio-item.html">
-							<%= image_tag 'p4.jpg', class: "img-responsive customer-img"%>
-						</a>
-						<h4>
-							<a href="portfolio-item.html">Project Name</a>
-						</h4>
-					</div>
-					<div class="col-md-3 img-portfolio">
-						<a href="portfolio-item.html">
-							<%= image_tag 'p5.jpg', class: "img-responsive customer-img"%>
-						</a>
-						<h4>
-							<a href="portfolio-item.html">Project Name</a>
-						</h4>
-					</div>
-					<div class="col-md-3 img-portfolio">
-						<a href="portfolio-item.html">
-							<%= image_tag 'p6.jpg', class: "img-responsive customer-img"%>
-						</a>
-						<h4>
-							<a href="portfolio-item.html">Project Name</a>
-						</h4>
-					</div>
-					<div class="col-md-3 img-portfolio">
-						<a href="portfolio-item.html">
-							<%= image_tag 'p1.jpg', class: "img-responsive customer-img"%>
-						</a>
-						<h4>
-							<a href="portfolio-item.html">Project Name</a>
-						</h4>
+					<% end %>
 					</div>
 				</div>
 			</div>

@@ -15,6 +15,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/new
   def new
     @profile = Profile.new
+    @profile.addresses.build
   end
 
   # GET /profiles/1/edit
@@ -42,6 +43,7 @@ class ProfilesController < ApplicationController
   # PATCH/PUT /profiles/1.json
   def update
     respond_to do |format|
+      @profile.addresses.destroy_all
       if @profile.update(profile_params)
         format.html { redirect_to edit_profile_path(@profile), notice: 'Profile was successfully updated.' }
         format.json { render :show, status: :ok, location: @profile }
@@ -71,6 +73,8 @@ class ProfilesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def profile_params
-    params.require(:profile).permit(:first_name, :middle_name, :last_name, :email, :mobile_no, :address, :image)
+    params.require(:profile).permit(:first_name, :middle_name\
+      , :last_name, :email, :mobile_no, :image\
+      , addresses_attributes: [:street, :city, :state, :pincode, :country])
   end
 end

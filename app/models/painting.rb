@@ -4,7 +4,7 @@ class Painting < ActiveRecord::Base
   has_many :client_histories, dependent: :destroy
   has_attached_file :image
   validates :title, :profile_id, :painting_category_id\
-  , :status, presence: true
+  , :status, :year, presence: true
   validates_attachment_content_type :image\
   , content_type: ['image/jpg', 'image/jpeg', 'image/png', 'image/gif']
   scope :category_profile_list, -> { [Profile.list, PaintingCategory.list] }
@@ -19,5 +19,9 @@ class Painting < ActiveRecord::Base
     else
       where(painting_category_id: id, profile_id: profile_id)
     end
+  end
+
+  def self.latest_paintings
+    order(created_at: :desc).limit(6)
   end
 end

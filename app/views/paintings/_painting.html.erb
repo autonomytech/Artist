@@ -14,7 +14,7 @@
 				<%= link_to edit_painting_path(painting) do %>
 					<%= painting_status(painting)%> <%= painting.title %>
 					<br />
-					<small><%= painting.created_at.strftime("%d %B %Y") %></small>
+					<small><%= painting.year %></small>
 				<%end%>
 				<div class="ibox-tools">
 				<%= link_to painting_path(painting), remote: true do %><i class="fa fa-search-plus fa-md"></i><%end%>

@@ -3,6 +3,8 @@ class Profile < ActiveRecord::Base
   has_many :qualifications
   has_many :achievements
   has_attached_file :image
+  has_many :addresses
+  accepts_nested_attributes_for :addresses
   validates :first_name, :last_name, :email, :mobile_no, presence: true
   validates :mobile_no, numericality: { only_integer: true }\
   , length: { is: 10 }
@@ -19,11 +21,17 @@ class Profile < ActiveRecord::Base
     paintings.each do |painting|
       categories << painting.painting_category
     end
-    categories.uniq
+    categories.uniq.compact
   end
 
   def self.artist_comment(id)
     profile = find(id)
     return profile.full_name, profile.email
+  end
+
+  def address
+    add = addresses.last
+    return unless add
+    [add.street, add.city, add.state, add.pincode, add.country].join(',')
   end
 end

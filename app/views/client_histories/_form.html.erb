@@ -5,13 +5,16 @@
     <%= f.email_field :email, placeholder: 'Email' %>
     <%= f.text_field :mobile_no, placeholder: 'Mobile No' %>
     <%= f.text_field :payment_status, placeholder: 'Payment Status' %>
-    <%= f.select :painting_id, @paintings, {prompt: true}, {onchange: "painting_client_history();", required: true} %>    
+    <%= f.select :painting_id, @paintings, {prompt: true}, {onchange: "painting_client_history();", required: true} %>
+    <%= f.fields_for :addresses do |ff|%>
+      <%= render 'addresses_form', f:ff %>
+    <%end%>
     <%= f.submit 'Save', class: 'btn btn-primary' %>
     <% end %>
   </div>
   <div class="col-md-8">
     <div class="img-crop">
-      <%= image_tag (@client_history.painting ? @client_history.painting.image : ''), width: 600 %>
+      <%= image_tag (@client_history.painting ? @client_history.painting.image : ''), class: 'img-responsive' %>
     </div>
   </div>
 </div>

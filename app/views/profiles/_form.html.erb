@@ -8,13 +8,15 @@
         <%= f.text_field :last_name, placeholder: 'Last Name' %>
         <%= f.email_field :email, placeholder: 'Email' %>
         <%= f.text_field :mobile_no, placeholder: 'Mobile Number' %>
-        <%= f.text_area :address, placeholder: 'Address' %>
+        <%= f.fields_for :addresses do |ff|%>
+          <%= render 'addresses_form', f:ff %>
+        <%end%>
         <%= f.submit 'Save', class: 'btn btn-primary' %>
       </div>
       <div class="col-md-6">
         <%= f.file_field :image, class: 'input_image btn btn-info', label: 'Upload new image'%>
         <div class="img-crop">
-          <%= image_tag (@profile.image? ? @profile.image : ''), width: 600 %>
+          <%= image_tag (@profile.image? ? @profile.image : ''), class: 'img-responsive' %>
         </div>
       </div>
     </div>
